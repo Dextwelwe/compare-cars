@@ -1,10 +1,14 @@
 package com.dextwelwe.carcomparaison.DTO;
+import com.dextwelwe.carcomparaison.model.Compte;
+import com.dextwelwe.carcomparaison.model.Utilisateur;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class UtilisateurDTO extends CompteDto {
     private String email;
     private List<String> revues;
@@ -15,5 +19,15 @@ public class UtilisateurDTO extends CompteDto {
         this.revues = revues;
         this.preferences = preferences;
         this.characteristiques = characteristiques;
+    }
+
+    public Utilisateur fromDTO(UtilisateurDTO utilisateurDTO){
+        return   new Utilisateur(
+                utilisateurDTO.getId(),
+                utilisateurDTO.getNomUtilisateur(),
+                utilisateurDTO.getMotDePasse(),
+                utilisateurDTO.revues,
+                utilisateurDTO.getPreferences(),
+                utilisateurDTO.getCharacteristiques());
     }
 }
