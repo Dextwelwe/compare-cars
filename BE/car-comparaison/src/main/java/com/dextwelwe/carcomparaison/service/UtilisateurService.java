@@ -12,10 +12,6 @@ import org.springframework.stereotype.Service;
 public class UtilisateurService {
     @Autowired
     private UtilisateurRepository utilisateurRepository;
-    @Autowired
-    public UtilisateurService(UtilisateurRepository utilisateurRepository) {
-     //   this.utilisateurRepository = utilisateurRepository;
-    }
 
     public void saveUtilisateur(Compte compte){
         utilisateurRepository.save(compte);
