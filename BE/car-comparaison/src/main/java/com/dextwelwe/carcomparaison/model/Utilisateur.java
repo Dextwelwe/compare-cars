@@ -1,9 +1,11 @@
 package com.dextwelwe.carcomparaison.model;
+import jakarta.persistence.Entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.List;
 @Data
 @NoArgsConstructor
+@Entity
 public class Utilisateur extends Compte{
    private String email;
    private List<String> revues;
