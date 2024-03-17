@@ -1,10 +1,7 @@
 package com.dextwelwe.carcomparaison.DTO;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -13,6 +10,6 @@ public class CompteDto {
     private String nomUtilisateur;
     private String motDePasse ;
 
-
-
+    public CompteDto(String nomUtilisateur) {
+    }
 }

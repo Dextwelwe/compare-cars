@@ -1,4 +1,6 @@
 package com.dextwelwe.carcomparaison.model;
+import com.dextwelwe.carcomparaison.DTO.UtilisateurDTO;
+import com.dextwelwe.carcomparaison.DTO.UtilisateurDTOGet;
 import jakarta.persistence.Entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,11 +12,28 @@ public class Utilisateur extends Compte{
    private String email;
    private List<String> revues;
    private String preferences;
-   private String characteristiques;
-    public Utilisateur(long id, String nomUtilisateur, String motDePasse, List<String> revues, String preferences, String characteristiques) {
+
+    public Utilisateur(long id, String nomUtilisateur, String motDePasse, List<String> revues, String preferences) {
         super(id, nomUtilisateur, motDePasse);
         this.revues = revues;
         this.preferences = preferences;
-        this.characteristiques = characteristiques;
+    }
+
+    public UtilisateurDTO toDTO(Utilisateur utilisateur){
+        return new UtilisateurDTO(
+                utilisateur.getId(),
+                utilisateur.getNomUtilisateur(),
+                utilisateur.getMotDePasse(),
+                utilisateur.getRevues(),
+                utilisateur.getPreferences()
+        );
+    }
+
+    public UtilisateurDTOGet toDTOGet(Utilisateur utilisateur){
+        return new UtilisateurDTOGet(
+              utilisateur.getNomUtilisateur(),
+              utilisateur.getRevues(),
+              utilisateur.getPreferences()
+        );
     }
 }

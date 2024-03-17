@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/utilisateur")
 @CrossOrigin(origins = "http://localhost:3000")
 @RequiredArgsConstructor
-public class UtilisateurControlleur {
+public class UtilisateurControlleur{
     private UtilisateurService utilisateurService;
     @Autowired
     public UtilisateurControlleur(UtilisateurService utilisateurService) {
