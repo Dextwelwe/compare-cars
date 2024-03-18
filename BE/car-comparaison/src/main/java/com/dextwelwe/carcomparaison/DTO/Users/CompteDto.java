@@ -1,4 +1,4 @@
-package com.dextwelwe.carcomparaison.DTO;
+package com.dextwelwe.carcomparaison.DTO.Users;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

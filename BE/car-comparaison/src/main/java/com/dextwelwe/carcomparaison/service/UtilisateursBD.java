@@ -1,10 +1,9 @@
 package com.dextwelwe.carcomparaison.service;
-import com.dextwelwe.carcomparaison.model.Compte;
-import com.dextwelwe.carcomparaison.model.Gestionnaire;
+import com.dextwelwe.carcomparaison.model.Users.Compte;
+import com.dextwelwe.carcomparaison.model.Users.Gestionnaire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
-
 @Service
 public class UtilisateursBD implements CommandLineRunner {
     @Autowired

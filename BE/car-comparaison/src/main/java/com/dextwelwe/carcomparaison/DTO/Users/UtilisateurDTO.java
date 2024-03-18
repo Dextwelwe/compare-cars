@@ -1,5 +1,5 @@
-package com.dextwelwe.carcomparaison.DTO;
-import com.dextwelwe.carcomparaison.model.Utilisateur;
+package com.dextwelwe.carcomparaison.DTO.Users;
+import com.dextwelwe.carcomparaison.model.Users.Utilisateur;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

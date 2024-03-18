@@ -1,7 +1,8 @@
 package com.dextwelwe.carcomparaison.controlleurs;
-import com.dextwelwe.carcomparaison.DTO.UtilisateurDTO;
+import com.dextwelwe.carcomparaison.DTO.Users.ConnectionRequest;
+import com.dextwelwe.carcomparaison.DTO.Users.UtilisateurDTO;
+import com.dextwelwe.carcomparaison.DTO.Users.UtilisateurDTOGet;
 import com.dextwelwe.carcomparaison.service.UtilisateurService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/utilisateur")
 @CrossOrigin(origins = "http://localhost:3000")
-@RequiredArgsConstructor
 public class UtilisateurControlleur{
     private UtilisateurService utilisateurService;
     @Autowired
@@ -25,5 +25,15 @@ public class UtilisateurControlleur{
             System.out.println(e.getMessage());
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
+    }
+    @PostMapping("/login")
+    public ResponseEntity<UtilisateurDTO> connexion(@RequestBody ConnectionRequest connectionRequest) {
+        UtilisateurDTOGet utilisateurDTOGet;
+        try {
+          utilisateurDTOGet = utilisateurService.getUtilisateurDTOGet(connectionRequest);
+        } catch (Exception e){
+            ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.badRequest().build();
     }
 }

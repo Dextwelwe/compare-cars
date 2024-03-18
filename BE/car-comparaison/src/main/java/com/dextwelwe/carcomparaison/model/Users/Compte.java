@@ -1,4 +1,4 @@
-package com.dextwelwe.carcomparaison.model;
+package com.dextwelwe.carcomparaison.model.Users;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.*;

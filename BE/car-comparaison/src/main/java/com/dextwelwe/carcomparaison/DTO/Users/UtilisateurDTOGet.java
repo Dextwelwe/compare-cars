@@ -1,10 +1,11 @@
-package com.dextwelwe.carcomparaison.DTO;
+package com.dextwelwe.carcomparaison.DTO.Users;
+import com.dextwelwe.carcomparaison.DTO.Users.CompteDto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.List;
 @NoArgsConstructor
 @Data
-public class UtilisateurDTOGet extends CompteDto{
+public class UtilisateurDTOGet extends CompteDto {
     private String email;
     private List<String> revues;
     private String preferences;
