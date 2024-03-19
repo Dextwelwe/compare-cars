@@ -1,4 +1,5 @@
 package com.dextwelwe.carcomparaison.model.Voiture;
+import com.dextwelwe.carcomparaison.DTO.Voiture.VoitureDto;
 import com.dextwelwe.carcomparaison.model.Image;
 import com.dextwelwe.carcomparaison.model.Rating;
 import jakarta.persistence.*;
@@ -15,6 +16,7 @@ public class Voiture {
     private long id;
     private String marque;
     private String annee;
+    private String modele;
     private String version;
     private String description;
     private EnumsVoiture.Transmission transmission;
@@ -32,4 +34,45 @@ public class Voiture {
     @OneToMany(fetch = FetchType.LAZY)
     private List<Rating> note;
     private String MSRP;
+
+    public Voiture(long id, String marque, String annee, String version, String modele) {
+    this.id = id;
+    this.marque = marque;
+    this.annee = annee;
+    this.version = version;
+    this.modele = modele;
+    }
+
+    public VoitureDto toDTO(Voiture voiture){
+        return new VoitureDto(
+                voiture.getId(),
+                voiture.getMarque(),
+                voiture.getAnnee(),
+                voiture.getModele(),
+                voiture.getVersion(),
+                voiture.getDescription(),
+                voiture.getTransmission().toString(),
+                voiture.getMotricite().toString(),
+                voiture.getTypeCarburant().toString(),
+                voiture.getTypeCarroserie(),
+                voiture.getMoteur(),
+                voiture.getNumPortes(),
+                voiture.getEconomieCarburant(),
+                voiture.getEconomieCarburantAutoroute(),
+                voiture.getCharacteristiques(),
+                voiture.getCouleurs(),
+                voiture.getImages(),
+                voiture.getNote(),
+                voiture.getMSRP()
+        );
+    }
+    public VoitureDto toDTOMin(Voiture voiture){
+        return new VoitureDto(
+                voiture.getId(),
+                voiture.getMarque(),
+                voiture.getAnnee(),
+                voiture.getVersion(),
+                voiture.getModele()
+        );
+    }
 }

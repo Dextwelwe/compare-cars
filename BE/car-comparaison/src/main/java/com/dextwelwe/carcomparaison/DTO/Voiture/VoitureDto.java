@@ -1,14 +1,49 @@
 package com.dextwelwe.carcomparaison.DTO.Voiture;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import com.dextwelwe.carcomparaison.model.Image;
+import com.dextwelwe.carcomparaison.model.Rating;
+import com.dextwelwe.carcomparaison.model.Voiture.Voiture;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-@Entity
+import java.util.List;
 @Data
+@AllArgsConstructor
+
 public class VoitureDto {
-    @Id
     private long id;
     private String marque;
     private String annee;
+    private String modele;
     private String version;
     private String description;
+    private String transmission;
+    private String motricite;
+    private String typeCarburant;
+    private String typeCarroserie;
+    private String moteur;
+    private int numPortes;
+    private String economieCarburant;
+    private String economieCarburantAutoroute;
+    private String characteristiques;
+    private String couleurs;
+    private List<Image> images;
+    private List<Rating> note;
+    private String MSRP;
+
+    public VoitureDto(long id, String marque, String annee, String version, String modele) {
+        this.id = id;
+        this.marque = marque;
+        this.annee = annee;
+        this.version = version;
+        this.modele = modele;
+    }
+
+    public Voiture fromDTOMin(VoitureDto voitureDto){
+        return new Voiture(
+                voitureDto.getId(),
+                voitureDto.getMarque(),
+                voitureDto.getAnnee(),
+                voitureDto.getVersion(),
+                voitureDto.getModele()
+        );
+    }
 }
