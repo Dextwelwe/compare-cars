@@ -15,8 +15,9 @@ public class UtilisateurDTO extends CompteDto {
     private String email;
     private List<RevueDTO> revues;
     private String preferences;
-    public UtilisateurDTO(long id, String nomUtilisateur, String motDePasse, List<RevueDTO> revues, String preferences) {
+    public UtilisateurDTO(long id, String email, String nomUtilisateur, String motDePasse, List<RevueDTO> revues, String preferences) {
         super(id, nomUtilisateur, motDePasse);
+        this.email = email;
         this.revues = revues;
         this.preferences = preferences;
     }
@@ -27,6 +28,7 @@ public class UtilisateurDTO extends CompteDto {
         }
         return   new Utilisateur(
                 utilisateurDTO.getId(),
+                utilisateurDTO.getEmail(),
                 utilisateurDTO.getNomUtilisateur(),
                 utilisateurDTO.getMotDePasse(),
                 revues,

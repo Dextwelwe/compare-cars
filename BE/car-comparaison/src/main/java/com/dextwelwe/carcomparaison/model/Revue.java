@@ -7,6 +7,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import java.util.ArrayList;
 import java.util.List;
 @Entity
@@ -17,11 +19,15 @@ public class Revue {
     @Id
     private long id;
     @ManyToOne
+    @JoinColumn(name="NOM_UTILISATEUR")
+    @ToString.Exclude
     private Utilisateur utilisateur;
-    @OneToOne()
+    @OneToOne
+    @ToString.Exclude
     private Voiture voiture;
     private String titre;
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany
+    @ToString.Exclude
     private List<Image> images;
     private String description;
 

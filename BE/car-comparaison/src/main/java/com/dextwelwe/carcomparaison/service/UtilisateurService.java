@@ -4,6 +4,7 @@ import com.dextwelwe.carcomparaison.DTO.Users.UtilisateurDTOGet;
 import com.dextwelwe.carcomparaison.model.Users.Compte;
 import com.dextwelwe.carcomparaison.model.Users.Utilisateur;
 import com.dextwelwe.carcomparaison.repository.UtilisateurRepository;
+import jakarta.transaction.Transactional;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

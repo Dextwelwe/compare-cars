@@ -11,5 +11,6 @@ public class CompteDto {
     private String motDePasse ;
 
     public CompteDto(String nomUtilisateur) {
+        this.nomUtilisateur = nomUtilisateur;
     }
 }
