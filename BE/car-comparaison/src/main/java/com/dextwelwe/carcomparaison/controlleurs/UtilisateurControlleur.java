@@ -17,9 +17,9 @@ public class UtilisateurControlleur{
         this.utilisateurService = utilisateurService;
     }
     @PostMapping
-    public ResponseEntity<UtilisateurDTO> createUtilisateur(@RequestBody UtilisateurDTO utilisateurDTO) {
+    public ResponseEntity<UtilisateurDTO> createUpdateUtilisateur(@RequestBody UtilisateurDTO utilisateurDTO) {
         try {
-            utilisateurService.saveUtilisateur(utilisateurDTO.fromDTO(utilisateurDTO));
+            utilisateurService.saveUpdateUtilisateur(utilisateurDTO);
             return new ResponseEntity<>(utilisateurDTO, HttpStatus.CREATED);
         } catch (Exception e) {
             System.out.println(e.getMessage());

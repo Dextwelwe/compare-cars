@@ -7,7 +7,6 @@ import lombok.Data;
 import java.util.List;
 @Data
 @AllArgsConstructor
-
 public class VoitureDto {
     private long id;
     private String marque;

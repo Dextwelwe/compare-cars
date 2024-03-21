@@ -1,8 +1,5 @@
 package com.dextwelwe.carcomparaison.model.Users;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.springframework.lang.NonNull;
@@ -15,6 +12,7 @@ import org.springframework.lang.NonNull;
 @Data
 public class Compte {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @NonNull
     @Size(min=5)

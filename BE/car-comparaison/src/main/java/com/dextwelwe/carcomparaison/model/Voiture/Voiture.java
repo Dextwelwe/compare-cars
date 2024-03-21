@@ -3,6 +3,7 @@ import com.dextwelwe.carcomparaison.DTO.Voiture.VoitureDto;
 import com.dextwelwe.carcomparaison.model.Image;
 import com.dextwelwe.carcomparaison.model.Rating;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,8 +19,12 @@ public class Voiture {
     private long id;
     @NonNull
     private String marque;
+    @NotNull
     private String annee;
+    @NonNull
     private String modele;
+    @Column(unique = true)
+    @NonNull
     private String version;
     private String description;
     private EnumsVoiture.Transmission transmission;
