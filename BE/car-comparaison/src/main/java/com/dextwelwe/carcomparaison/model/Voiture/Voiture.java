@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.lang.NonNull;
+
 import java.util.List;
 @Entity
 @Data
@@ -14,6 +16,7 @@ import java.util.List;
 public class Voiture {
     @Id
     private long id;
+    @NonNull
     private String marque;
     private String annee;
     private String modele;

@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.lang.NonNull;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,10 +15,13 @@ import lombok.NoArgsConstructor;
 public class Image {
     @Id
     private long id;
+    @NonNull
     private String nomDeFichier;
+    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     private Voiture voiture;
     @OneToOne
+    @NonNull
     private Utilisateur proprietaire;
     public ImageDTO toDTO(Image image){
         return new ImageDTO(

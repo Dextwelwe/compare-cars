@@ -3,15 +3,9 @@ import com.dextwelwe.carcomparaison.DTO.RevueDTO;
 import com.dextwelwe.carcomparaison.DTO.Users.UtilisateurDTO;
 import com.dextwelwe.carcomparaison.DTO.Users.UtilisateurDTOGet;
 import com.dextwelwe.carcomparaison.model.Revue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Transient;
-import jakarta.transaction.Transactional;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import jakarta.persistence.*;
+import lombok.*;
+import org.springframework.lang.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,11 +15,15 @@ import java.util.List;
 @Entity
 @ToString(callSuper = true)
 public class Utilisateur extends Compte {
-   private String email;
+    @Column(unique = true)
+    @NonNull
+    private String email;
    @OneToMany(mappedBy = "utilisateur", fetch = FetchType.LAZY)
    @ToString.Exclude
-   private List<Revue> revues = new ArrayList<>();
+   private List<Revue> revues;
+   @NonNull
    private String preferences;
+
 
     public Utilisateur(long id, String email, String nomUtilisateur, String motDePasse, List<Revue> revues, String preferences) {
         super(id, nomUtilisateur, motDePasse);

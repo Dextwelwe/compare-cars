@@ -11,11 +11,20 @@ import org.springframework.stereotype.Service;
 @Service
 @NoArgsConstructor
 public class UtilisateurService {
-    @Autowired
     private UtilisateurRepository utilisateurRepository;
+    private final Outils outils = new Outils();
+    @Autowired
+    public UtilisateurService(UtilisateurRepository utilisateurRepository) {
+        this.utilisateurRepository = utilisateurRepository;
+    }
+
     public void removeUtilisateur(Compte compte) {utilisateurRepository.delete(compte);}
-    public void saveUtilisateur(Compte compte){
-        utilisateurRepository.save(compte);
+    public Compte saveUtilisateur(Compte compte) {
+        if (!outils.anyFieldIsNull(compte)) {
+            utilisateurRepository.save(compte);
+            return compte;
+        }
+        return null;
     }
 
     public UtilisateurDTOGet getUtilisateurDTOGet(ConnectionRequest connectionRequest) throws Exception {

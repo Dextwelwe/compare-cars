@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -13,8 +16,11 @@ public class Rating {
     @Id
     private long id;
     @ManyToOne(fetch = FetchType.LAZY)
+    @NonNull
     private Voiture voiture;
+    @NonNull
     private double note;
+    @Nullable
     private String commentaire;
     public RatingDTO toDto(Rating rating){
         return new RatingDTO(

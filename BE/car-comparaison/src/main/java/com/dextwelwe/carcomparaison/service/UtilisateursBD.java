@@ -1,16 +1,11 @@
 package com.dextwelwe.carcomparaison.service;
-import com.dextwelwe.carcomparaison.DTO.Users.ConnectionRequest;
-import com.dextwelwe.carcomparaison.DTO.Users.UtilisateurDTOGet;
-import com.dextwelwe.carcomparaison.model.Users.Compte;
 import com.dextwelwe.carcomparaison.model.Users.Gestionnaire;
 import com.dextwelwe.carcomparaison.model.Users.Utilisateur;
 import com.dextwelwe.carcomparaison.repository.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
-
 @Service
 public class UtilisateursBD implements CommandLineRunner {
     @Autowired
@@ -23,18 +18,13 @@ public class UtilisateursBD implements CommandLineRunner {
         createGestionnaire();
     }
     public void createGestionnaire() throws Exception {
-        Gestionnaire gestionnaire = new Gestionnaire(3,"s","s");
-        Compte c = new Compte(1, "abc", "abc");
-        Utilisateur usd = new Utilisateur(11, "Dex", "dan", "mdp", null, "nope");
-        utilisateurService.saveUtilisateur(c);
+        Gestionnaire gestionnaire = new Gestionnaire(1,"Danil","Moskalenko");
+        Utilisateur utilisateur = new Utilisateur(2, "Dex@gmail.com", "Daniel", "Moss", new ArrayList<>(), "nope");
+        Utilisateur utilisateur2 = new Utilisateur(3, "Dex123@gmail.com", "Daniel123", "Moss123", new ArrayList<>(), "nope123");
         utilisateurService.saveUtilisateur(gestionnaire);
-        utilisateurService.saveUtilisateur(usd);
+        utilisateurService.saveUtilisateur(utilisateur);
+        utilisateurService.saveUtilisateur(utilisateur2);
         System.out.println("created");
-        ConnectionRequest connectionRequest = new ConnectionRequest();
-        connectionRequest.setNomUtilisateur("dan");
-        connectionRequest.setMotDePasse("mdp");
-        System.out.println(usd.getRevues());
-        Utilisateur u = (Utilisateur) utilisateurRepository.findByNomUtilisateur("dan");
-        System.out.println(u);
+
     }
 }
