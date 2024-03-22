@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.lang.NonNull;
 
 import java.util.List;
@@ -23,7 +24,6 @@ public class Voiture {
     private String annee;
     @NonNull
     private String modele;
-    @Column(unique = true)
     @NonNull
     private String version;
     private String description;
@@ -37,9 +37,11 @@ public class Voiture {
     private String economieCarburantAutoroute;
     private String characteristiques;
     private String couleurs;
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "voiture")
+    @ToString.Exclude
     private List<Image> images;
     @OneToMany(fetch = FetchType.LAZY)
+    @ToString.Exclude
     private List<Rating> note;
     private String MSRP;
 
