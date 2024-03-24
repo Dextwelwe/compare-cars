@@ -1,12 +1,10 @@
 package com.dextwelwe.carcomparaison.service;
 import com.dextwelwe.carcomparaison.model.Voiture.Voiture;
 import com.dextwelwe.carcomparaison.repository.VoitureRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 @Service
 public class VoitureService {
-    VoitureRepository voitureRepository;
-    @Autowired
+    private final VoitureRepository voitureRepository;
     public VoitureService(VoitureRepository voitureRepository) {
         this.voitureRepository = voitureRepository;
     }

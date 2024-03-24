@@ -5,7 +5,6 @@ import com.dextwelwe.carcomparaison.model.Voiture.EnumsVoiture;
 import com.dextwelwe.carcomparaison.model.Voiture.Voiture;
 import com.dextwelwe.carcomparaison.repository.UtilisateurRepository;
 import com.dextwelwe.carcomparaison.repository.VoitureRepository;
-import jdk.swing.interop.SwingInterOpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
@@ -16,7 +15,6 @@ public class UtilisateursBD implements CommandLineRunner {
     UtilisateurService utilisateurService;
     @Autowired
     UtilisateurRepository utilisateurRepository;
-
     @Autowired
     VoitureRepository voitureRepository;
     @Autowired

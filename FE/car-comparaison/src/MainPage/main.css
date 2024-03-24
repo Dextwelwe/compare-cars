@@ -1,0 +1,110 @@
+.topDiv {
+    height : 100%;
+    width: 100%;
+    color : ghostwhite;
+}
+
+.button{
+font-family: "Cairo", sans-serif;
+ padding : 3px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ color : ghostwhite;
+ height: 40px;
+ border-radius: 20px;
+ border-width: 1px;
+ width: 120px;
+ border-color : transparent;
+ background-color: #76ABAE;
+ font-size: 14px;
+}
+
+h1 {
+    text-align: center;
+    margin-top: -40px;
+    margin-bottom: 5px;
+    font-size: 39px;
+}
+
+select {
+    transition: 0.5s ease;
+    padding: 1px 1px 1px 1px;
+    border-color: transparent;
+    text-align: center;
+    font-family: "Cairo", sans-serif;
+    font-size: 17px;
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #EEEEEE;
+    background-image: url("../../images/caret-down-solid.svg");
+    background-repeat: no-repeat;
+    background-position: right 12px top 51%;
+    background-size: 0.65rem auto;
+    appearance: none;
+}
+
+.content {
+    position: absolute;
+    left : 50%;
+    top : 50%;
+    transform: translate(-50%,-50%);
+}
+
+.header {
+    width: 100%;
+    height : 100px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.divButtonHeader {
+    display:flex; 
+    gap : 10px;
+    margin-right : 50px;
+}
+
+.searchContainer {
+   box-sizing: border-box;
+   box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+   position: relative;
+   background-color:  #31363F;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 10px;
+   width: 1050px;
+   height: 130px;
+   border-radius:50px;
+   
+}
+
+@media screen and (max-width: 600px) {
+
+    .searchContainer{
+        
+    }
+}
+
+@media screen and (max-width: 1050px) {
+
+    .searchContainer{
+        width: 95%;
+        flex-direction: column;
+        height: 300px;
+        
+    }
+
+    .button {
+        width: 90%;
+        height: 45px;
+    }
+
+    select {
+        width: 90%;
+        height : 45px;
+    }
+}
