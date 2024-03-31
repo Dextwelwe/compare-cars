@@ -11,7 +11,7 @@ export default function Main() {
             </div>
             </div>
     <div className='content'>
-        <h1>SEARCH AND COMPARE CARS</h1>
+        <h1 style={{fontWeight : 'bold'}}>Search & Compare Cars</h1>
     <div className='searchContainer'>
         <select name="car1" >
             <option value="" >Make</option>
@@ -19,24 +19,24 @@ export default function Main() {
             <option value="bmw">BMW</option>
             <option value="mercedes">Mercedes</option>
         </select>
-        <select name="car1">
+        <select name="car1" disabled>
             <option value="" >Model</option>
             <option value="audi">Audi</option>
             <option value="bmw">BMW</option>
             <option value="mercedes">Mercedes</option>
         </select>
-        <select name="car1">
+        <select name="car1" disabled>
         <option value="" >Year</option>
             <option value="audi">Audi</option>
             <option value="bmw">BMW</option>
             <option value="mercedes">Mercedes</option>
         </select>
-        <select name="car1">
+        <select name="car1" disabled>
             <option value="audi">Trim</option>
             <option value="bmw">BMW</option>
             <option value="mercedes">Mercedes</option>
         </select>
-            <button className='button' style={{backgroundColor : "#FF204E"}}>SEARCH</button>
+            <button className='button' style={{boxShadow : 'none'}}>SEARCH</button>
         </div>
     </div>
     </div>
