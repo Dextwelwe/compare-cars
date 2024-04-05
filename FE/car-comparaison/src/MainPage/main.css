@@ -5,30 +5,11 @@
     user-select: none;
 }
 
-.button{
-font-family: "Cairo", sans-serif;
- padding : 3px;
- display: flex;
- align-items: center;
- justify-content: center;
- color : ghostwhite;
- height: 40px;
- border-radius: 20px;
- border-width: 1px;
- width: 120px;
- border-color : transparent;
- background-color: #17B794;
- font-size: 14px;
- cursor:pointer;
- box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-}
-
 h1 {
     text-align: center;
     margin-top: -40px;
     margin-bottom: 5px;
     font-size: 35px;
-    
 }
 
 select {
@@ -48,10 +29,6 @@ select {
     background-size: 0.65rem auto;
     appearance: none;
     cursor: pointer;
-}
-
-option:hover {
-    background-color: red;
 }
 
 .content {
@@ -76,28 +53,17 @@ option:hover {
     margin-right : 50px;
 }
 
-
-
 .searchContainer {
-   box-sizing: border-box;
-   box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
-   position: relative;
-  
    display: flex;
    justify-content: center;
-   background-color: #FFF7FC;
    align-items: center;
    gap: 10px;
    width: 1050px;
    height: 100px;
-   border-radius:17px;
 }
 
 @media screen and (max-width: 600px) {
 
-    .searchContainer{
-        
-    }
 }
 
 @media screen and (max-width: 1050px) {
@@ -109,10 +75,6 @@ option:hover {
         
     }
 
-    .button {
-        width: 90%;
-        height: 45px;
-    }
 
     select {
         width: 90%;

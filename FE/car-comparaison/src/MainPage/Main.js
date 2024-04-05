@@ -1,13 +1,26 @@
-import React from 'react'
+import React , {useState} from 'react'
 import "./main.css"
+import "../global.css"
+import LoginPopup from '../Login/LoginPopup';
 
 export default function Main() {
+
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+
+  const toggleLoginPopup = () => {
+    setIsLoginOpen(!isLoginOpen);
+  }; 
+
   return (
+
     <div className="topDiv">
+        {isLoginOpen && <LoginPopup closePopup={toggleLoginPopup} />}
         <div className='header'>
             <div className='divButtonHeader'>
             <button className='button'>DISCOVER</button>
-            <button className='button'>SIGN IN</button>
+
+            <button className='button' onClick={toggleLoginPopup}>SIGN IN</button>
+           
             </div>
             </div>
     <div className='content'>

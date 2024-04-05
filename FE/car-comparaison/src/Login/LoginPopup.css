@@ -1,0 +1,85 @@
+#frame{
+    position: absolute;
+    height : 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+}
+
+#popup{
+    position: absolute;
+    width: 350px;
+    height: max-content;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+
+    padding: 10px;
+}
+
+.closePopup {
+   display: flex; 
+   justify-content: center;
+   align-items: center;
+   border: 1px;
+   border-color: inherit;
+   background-color: transparent;
+   border-radius: 17px;
+   line-height: 31px;
+   font-size: 30px;
+   font-family: "Cairo", sans-serif;
+   font-weight: bold;
+   margin-top: 0;
+}
+
+.closeButtonContainer{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.signButtons{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+   margin-top : 20px;
+}
+
+.inputContainer{
+    gap: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.inputContainer input {
+    width: 100%;
+    font-size: 15px;
+    outline: none;
+}
+
+.inputContainer input:focus {
+    background-color: #d9d9d9;
+}
+
+
+
+#popupContentWrapper {
+margin-top : 20px;
+width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+#popupContent {
+    width: 85%;
+}
+
+.titlePopup {
+    margin-top: 0;
+margin-bottom : 10px;
+}
