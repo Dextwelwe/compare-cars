@@ -1,5 +1,5 @@
 #frame{
-    position: absolute;
+    position: fixed;
     height : 100%;
     width: 100%;
     background: rgba(0, 0, 0, 0.6);
@@ -7,7 +7,7 @@
 }
 
 #popup{
-    position: absolute;
+    position: fixed;
     width: 350px;
     height: max-content;
     left:50%;

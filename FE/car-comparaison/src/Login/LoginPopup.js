@@ -1,20 +1,31 @@
-import React , { useState, useRef } from 'react';
+import React , { useState, useRef, useEffect } from 'react';
 import './LoginPopup.css';
 import "../global.css";
 
-export default function LoginPopup({closePopup}) {
+export default function LoginPopup({closePopup, setUser, setIsLogged}) {
  const [username, setUsername] = useState('');
  const [password, setPassword] = useState('');
+ const [email, setEmail] = useState('');
  const [usernameError, setUsernameError] = useState('');
- const [passwordError, setPasswordError] = useState('');
+ const [passwordError, setPasswordError] = useState(''); 
+ const [emailError, setEmailError] = useState(''); 
  const [connectionErrorMessage, setConnectionErrorMessage] = useState('');
+ const [signIn, setSignIn] = useState(true);
  const checkboxRef = useRef(null);
  const passwordRef = useRef(null);
+ const emailRef = useRef(null);
 
+ useEffect(() => {
+        document.addEventListener('keydown', handleEscapeKey);
+        // eslint-disable-next-line
+    },[]);
 
-
-
-
+ const handleEscapeKey = (event) => {
+    if (event.key === 'Escape') {
+        closePopup();
+        document.removeEventListener('keydown', handleEscapeKey);
+    }
+}
  const handleUsername = (event) => {
     setUsername(event.target.value);
   };
@@ -52,21 +63,22 @@ export default function LoginPopup({closePopup}) {
         .then(response => {
             if (response.ok) {
                 return response.json();
-                document.getElementById("connectionErr").style.display = "inline";
             } else {
                 showErrConnection(response);
             }
         })
         .then(data => {
-            console.log('Login successful:', data);
+            document.getElementById("connectionErr").style.display = "none";
+            setIsLogged(true)
+            setUser(username)
+            closePopup();
         })
         .catch(error => {
-            console.log()
+            console.log(error)
         });
     }
 
     function showErrConnection(code) {
-        console.log(code)
         let errElement = document.getElementById("connectionErr");
         if (code.status === 404){
              setConnectionErrorMessage("Username or Password are incorrect.");
@@ -79,8 +91,8 @@ export default function LoginPopup({closePopup}) {
     function validateForm() {
         let isValid = true;
 
-        if (username.trim().length < 5 || username.trim().length > 50) {
-            setUsernameError('*Username length must be between 5 and 50 characters');
+        if (username.trim().length < 5 || username.trim().length > 20) {
+            setUsernameError('*Username length must be between 5 and 20 characters');
             document.getElementById("usernameErr").style.display = "inline";
             isValid = false;
         } else {
@@ -98,12 +110,31 @@ export default function LoginPopup({closePopup}) {
         return isValid;
     }
 
+    const handleSignUp = () => {
+        document.getElementById("usernameErr").style.display = "none";
+        document.getElementById("passwordErr").style.display = "none";
+
+        setConnectionErrorMessage("");
+        setEmailError("");
+        setPasswordError("");
+        setUsernameError("");
+        setEmail("");
+        setPassword("");
+        setUsername("");
+        setSignIn(false);
+    }
+
+    function handleEmail(event){
+        setEmail(event.target.value);
+    }
+
   return (
     <div id='frame'>
-      <div id='popup' className='content-box'>
-        <div className='closeButtonContainer'>
+      <div id='popup' className='content-box' >
+        <div className='closeButtonContainer'>     
       <button className='closePopup' onClick={closePopup}>&times;</button>
       </div>
+      {signIn ? (
       <div id='popupContentWrapper'>
       <div id='popupContent'>
       <div>
@@ -121,12 +152,42 @@ export default function LoginPopup({closePopup}) {
             <p id="connectionErr" className='errorMsg'>{connectionErrorMessage}</p>
             </div>
             <div className='signButtons'>
-        <button className='button' style={{width: '45%'}} >Sign Up</button>
-        <button className='button' style={{width: '45%'}} onClick={handleLogin} >Sign In</button>
+        <button className='button' style={{width: '45%', boxShadow : 'none'}} onClick={handleSignUp} >Sign Up</button>
+        <button className='button' style={{width: '45%', boxShadow : 'none'}} onClick={handleLogin} >Sign In</button>
         </div>
       </div>
       </div>
+      ):
+      (
+        <div id='popupContentWrapper'>
+        <div id='popupContent'>
+        <div>
+          <h2 className='titlePopup' style={{textAlign:'center'}}>Sign Up</h2>
+          </div>
+          <div className='inputContainer'>
+              <input className='input' placeholder="Username*" onChange={handleUsername} value={username}></input>
+              <p id="usernameErr" className="errorMsg" >{usernameError}</p>
+              <input id='email' ref={emailRef} className='input' type="text" placeholder="Email*" onChange={handleEmail} value={email}></input>
+              <p id="emailErr" className="errorMsg" style={{textAlign: 'start'}}>{emailError}</p>
+              <input id='password' ref={passwordRef} className='input' type="password" placeholder="Password*" onChange={handlePassword} value={password}></input>
+              <p id="passwordErr" className="errorMsg" style={{textAlign: 'start'}}>{passwordError}</p>  
+              <div className='showPassword'>
+                  <p>Show Password</p>
+                  <input type='checkbox' ref={checkboxRef} onClick={handleCheckbox}></input>
+              </div>
+              <p id="connectionErr" className='errorMsg'>{connectionErrorMessage}</p>
+              </div>
+              <div className='signButtons'>
+          <button className='button' style={{width: '45%', boxShadow : 'none'}} onClick={()=> setSignIn(true)} >Back</button>
+          <button className='button' style={{width: '45%', boxShadow : 'none'}} onClick={handleLogin} >Sign Up</button>
+          </div>
+        </div>
+        </div>
+
+      )
+      }
+      </div>
     </div>
-    </div>
+    
   )
 }

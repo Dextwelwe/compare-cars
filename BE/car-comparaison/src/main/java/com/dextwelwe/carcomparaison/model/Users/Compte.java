@@ -15,11 +15,11 @@ public class Compte {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @NonNull
-    @Size(min=5)
-    @Size(max = 50)
+    @Size(min=6)
+    @Size(max = 20)
     private String nomUtilisateur;
     @NonNull
     @Size(min=8)
-    @Size(max=50)
+    @Size(max=20)
     private String motDePasse ;
 }
