@@ -10,11 +10,11 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @ToString(callSuper = true)
-public class UtilisateurDTOGet extends CompteDto {
+public class UtilisateurDTOGet extends CompteDtoGet {
     private List<RevueDTO> revues;
     private String preferences;
-    public UtilisateurDTOGet(String nomUtilisateur, List<RevueDTO> revues, String preferences) {
-        super(nomUtilisateur);
+    public UtilisateurDTOGet(long id ,String nomUtilisateur, List<RevueDTO> revues, String preferences) {
+        super(id,nomUtilisateur);
         this.revues = revues;
         this.preferences = preferences;
     }

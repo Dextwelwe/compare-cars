@@ -27,13 +27,14 @@ public class UtilisateurControlleur{
         }
     }
     @PostMapping("/login")
-    public ResponseEntity<UtilisateurDTO> connexion(@RequestBody ConnectionRequest connectionRequest) {
+    public ResponseEntity<UtilisateurDTOGet> connexion(@RequestBody ConnectionRequest connectionRequest) {
         UtilisateurDTOGet utilisateurDTOGet;
         try {
-          utilisateurDTOGet = utilisateurService.getUtilisateurDTOGet(connectionRequest);
-        } catch (Exception e){
-            ResponseEntity.notFound().build();
+            utilisateurDTOGet = utilisateurService.getUtilisateurDTOGet(connectionRequest);
+            return ResponseEntity.ok(utilisateurDTOGet);
+        } catch (Exception e) {
+            System.out.println(e);
+            return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.badRequest().build();
     }
 }

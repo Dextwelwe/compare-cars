@@ -24,7 +24,6 @@ public class Utilisateur extends Compte {
    @NonNull
    private String preferences;
 
-
     public Utilisateur(long id, String email, String nomUtilisateur, String motDePasse, List<Revue> revues, String preferences) {
         super(id, nomUtilisateur, motDePasse);
         this.email = email;
@@ -48,6 +47,7 @@ public class Utilisateur extends Compte {
     }
     public UtilisateurDTOGet toDTOGet(Utilisateur utilisateur){
         return new UtilisateurDTOGet(
+                utilisateur.getId(),
               utilisateur.getNomUtilisateur(),
               utilisateur.getRevuesDTO(),
               utilisateur.getPreferences()

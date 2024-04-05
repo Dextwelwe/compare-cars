@@ -20,6 +20,7 @@ public class Gestionnaire extends Compte {
     }
     public GestionnaireDTOGet toDTOGet(Gestionnaire gestionnaire){
         return new GestionnaireDTOGet(
+                gestionnaire.getId(),
                gestionnaire.getNomUtilisateur()
         );
     }

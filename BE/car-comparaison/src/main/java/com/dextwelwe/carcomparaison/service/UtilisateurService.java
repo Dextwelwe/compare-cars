@@ -23,8 +23,8 @@ public class UtilisateurService {
     public UtilisateurDTOGet getUtilisateurDTOGet(ConnectionRequest connectionRequest) throws Exception {
        Utilisateur utilisateur =  utilisateurRepository.findByNomUtilisateur(connectionRequest.getNomUtilisateur());
        if (utilisateur.getMotDePasse().equals(connectionRequest.getMotDePasse())){
-           throw new Exception("Mot de passe incorrect");
+           return utilisateur.toDTOGet(utilisateur);
        }
-       return utilisateur.toDTOGet(utilisateur);
+        throw new Exception("Mot de passe incorrect");
     }
 }
