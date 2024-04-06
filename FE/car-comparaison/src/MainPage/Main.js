@@ -23,12 +23,12 @@ export default function Main() {
 
   return (
     <div className="topDiv">
-        {isLoginOpen && <LoginPopup closePopup={toggleLoginPopup} setUser={updateUser} setIsLogged={setIsLogged}  />}
+        {isLoginOpen && <LoginPopup closePopup={toggleLoginPopup} setUser={updateUser} setIsLogged={setIsLogged} />}
         <div className='header'>
             <div className='divButtonHeader'>
             <button className='button'>DISCOVER</button>
             {isLogged ? (
-                 <button className='button' style={{borderColor : 'white'}}>{username}</button>) :
+                 <button className='button' style={{borderColor : 'gold', borderStyle : 'solid'}}>{username}</button>) :
            (<button className='button' onClick={toggleLoginPopup}>SIGN IN</button> )}
             </div>
             </div>

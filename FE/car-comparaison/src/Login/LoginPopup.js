@@ -45,7 +45,7 @@ export default function LoginPopup({closePopup, setUser, setIsLogged}) {
   };
 
   function handleLogin() {
-    if (!validateForm()){
+    if (!validateFormSignIn()){
         return;
     }
     const connectionRequest = {
@@ -78,6 +78,24 @@ export default function LoginPopup({closePopup, setUser, setIsLogged}) {
         });
     }
 
+    function handleSignUp(){
+       if (!validateEmail() | !validatePassword() | !validateUserName()){
+        console.log('f')
+       }
+    }
+
+    function validateUserName(){
+        if (username.trim().length < 5 || username.trim().length > 20) {
+            setUsernameError('*Username length must be between 5 and 20 characters.');
+            document.getElementById("usernameErr").style.display = "inline";
+            return false;
+        } else {
+            setUsernameError('');
+            document.getElementById("usernameErr").style.display = "none";
+        }
+        return true;
+    }
+
     function showErrConnection(code) {
         let errElement = document.getElementById("connectionErr");
         if (code.status === 404){
@@ -88,11 +106,10 @@ export default function LoginPopup({closePopup, setUser, setIsLogged}) {
         errElement.style.display = "inline";
     }
 
-    function validateForm() {
+    function validateFormSignIn() {
         let isValid = true;
-
         if (username.trim().length < 5 || username.trim().length > 20) {
-            setUsernameError('*Username length must be between 5 and 20 characters');
+            setUsernameError('*Username length must be between 5 and 20 characters.');
             document.getElementById("usernameErr").style.display = "inline";
             isValid = false;
         } else {
@@ -103,17 +120,71 @@ export default function LoginPopup({closePopup, setUser, setIsLogged}) {
             setPasswordError('*Please enter the password');
             document.getElementById("passwordErr").style.display = "inline";
             isValid = false;
+        } else if (password.trim().length < 8) {
+            setPasswordError('*Password must be at least 8 characters long.');
+            document.getElementById("passwordErr").style.display = "inline";
+            isValid = false;
         } else {
             setPasswordError('');
             document.getElementById("passwordErr").style.display = "none";
         }
+        
         return isValid;
     }
 
-    const handleSignUp = () => {
+    function validateEmail(){
+        const regex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+
+        if (email.trim()==='') {
+            setEmailError('Please enter email adress.');
+            document.getElementById("emailErr").style.display = "inline";
+            return false;
+        } 
+         if (!regex.test(email)) {
+            setEmailError("Email is incorrect.");
+            document.getElementById("emailErr").style.display = "inline";
+            return false;
+        } 
+            setEmailError('');
+            document.getElementById("emailErr").style.display = "none";
+            return true;
+        
+    }
+
+    function validatePassword(){
+    const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,20}$/
+        if (!password.trim()) {
+            setPasswordError('*Please enter the password');
+            document.getElementById("passwordErr").style.display = "inline";
+            return false;
+        } 
+        if (!regex.test(password)) {
+            setPasswordError('*Password must be 8 to 20 characters long and must contain at least one number and a one special character.');
+            document.getElementById("passwordErr").style.display = "inline";
+            return false;
+        }
+        setPasswordError("");
+        document.getElementById("passwordErr").style.display = "none";
+        return true;
+    }
+
+    const handleBack = () => {
         document.getElementById("usernameErr").style.display = "none";
         document.getElementById("passwordErr").style.display = "none";
+        document.getElementById("emailErr").style.display = "none";
+        setConnectionErrorMessage("");
+        setEmailError("");
+        setPasswordError("");
+        setUsernameError("");
+        setEmail("");
+        setPassword("");
+        setUsername("");
+        setSignIn(true);
+    }
 
+    const handleSignUpButton = () => {
+        document.getElementById("usernameErr").style.display = "none";
+        document.getElementById("passwordErr").style.display = "none";
         setConnectionErrorMessage("");
         setEmailError("");
         setPasswordError("");
@@ -134,16 +205,22 @@ export default function LoginPopup({closePopup, setUser, setIsLogged}) {
         <div className='closeButtonContainer'>     
       <button className='closePopup' onClick={closePopup}>&times;</button>
       </div>
-      {signIn ? (
+    
       <div id='popupContentWrapper'>
       <div id='popupContent'>
       <div>
-        <h2 className='titlePopup' style={{textAlign:'center'}}>Login</h2>
+        {!signIn ? (
+        <h2 className='titlePopup' style={{textAlign:'center'}}>Sign Up</h2>) :
+        (<h2 className='titlePopup' style={{textAlign:'center'}}>Login</h2>)}
         </div>
         <div className='inputContainer'>
-            <input className='input' placeholder="Username" onChange={handleUsername} value={username}></input>
+            <input className='input' placeholder={signIn ? "Username" : "Username*"} onChange={handleUsername} value={username}></input>
             <p id="usernameErr" className="errorMsg" >{usernameError}</p>
-            <input id='password' ref={passwordRef} className='input' type="password" placeholder="Password" onChange={handlePassword} value={password}></input>
+            {
+                !signIn && <><input id='email' ref={emailRef} className='input' type="text" placeholder="Email*" onChange={handleEmail} value={email}></input>
+                             <p id="emailErr" className="errorMsg" style={{textAlign: 'start'}}>{emailError}</p> </>
+            }
+            <input id='password' ref={passwordRef} className='input' type="password" placeholder={signIn? "Password" : "Password*"} onChange={handlePassword} value={password}></input>
             <p id="passwordErr" className="errorMsg" style={{textAlign: 'start'}}>{passwordError}</p>
             <div className='showPassword'>
                 <p>Show Password</p>
@@ -152,40 +229,18 @@ export default function LoginPopup({closePopup, setUser, setIsLogged}) {
             <p id="connectionErr" className='errorMsg'>{connectionErrorMessage}</p>
             </div>
             <div className='signButtons'>
-        <button className='button' style={{width: '45%', boxShadow : 'none'}} onClick={handleSignUp} >Sign Up</button>
-        <button className='button' style={{width: '45%', boxShadow : 'none'}} onClick={handleLogin} >Sign In</button>
-        </div>
-      </div>
-      </div>
-      ):
-      (
-        <div id='popupContentWrapper'>
-        <div id='popupContent'>
-        <div>
-          <h2 className='titlePopup' style={{textAlign:'center'}}>Sign Up</h2>
-          </div>
-          <div className='inputContainer'>
-              <input className='input' placeholder="Username*" onChange={handleUsername} value={username}></input>
-              <p id="usernameErr" className="errorMsg" >{usernameError}</p>
-              <input id='email' ref={emailRef} className='input' type="text" placeholder="Email*" onChange={handleEmail} value={email}></input>
-              <p id="emailErr" className="errorMsg" style={{textAlign: 'start'}}>{emailError}</p>
-              <input id='password' ref={passwordRef} className='input' type="password" placeholder="Password*" onChange={handlePassword} value={password}></input>
-              <p id="passwordErr" className="errorMsg" style={{textAlign: 'start'}}>{passwordError}</p>  
-              <div className='showPassword'>
-                  <p>Show Password</p>
-                  <input type='checkbox' ref={checkboxRef} onClick={handleCheckbox}></input>
-              </div>
-              <p id="connectionErr" className='errorMsg'>{connectionErrorMessage}</p>
-              </div>
-              <div className='signButtons'>
-          <button className='button' style={{width: '45%', boxShadow : 'none'}} onClick={()=> setSignIn(true)} >Back</button>
-          <button className='button' style={{width: '45%', boxShadow : 'none'}} onClick={handleLogin} >Sign Up</button>
-          </div>
-        </div>
-        </div>
+                { signIn ? (
+        <button className='button' style={{width: '45%', boxShadow : 'none'}} onClick={handleSignUpButton} >Sign Up</button>) : (
+        <button className='button' style={{width: '45%', boxShadow : 'none'}} onClick={()=> setSignIn(true)} >Back</button>
+    )}  
+        { signIn ? (
+        <button className='button' style={{width: '45%', boxShadow : 'none'}} onClick={handleLogin} >Sign In</button>) :
+         (<button className='button' style={{width: '45%', boxShadow : 'none'}} onClick={handleSignUp} >Sign Up</button>)
 
-      )
-      }
+        }
+        </div>
+      </div>
+      </div>
       </div>
     </div>
     
