@@ -16,14 +16,14 @@ public class UtilisateurControlleur{
     public UtilisateurControlleur(UtilisateurService utilisateurService) {
         this.utilisateurService = utilisateurService;
     }
-    @PostMapping
-    public ResponseEntity<UtilisateurDTO> createUpdateUtilisateur(@RequestBody UtilisateurDTO utilisateurDTO) {
+    @PostMapping("/signUp")
+    public ResponseEntity<String> createUpdateUtilisateur(@RequestBody UtilisateurDTO utilisateurDTO) {
         try {
-            utilisateurService.saveUpdateUtilisateur(utilisateurDTO);
-            return new ResponseEntity<>(utilisateurDTO, HttpStatus.CREATED);
+            utilisateurService.saveUtilisateur(utilisateurDTO);
+            return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
     @PostMapping("/login")

@@ -6,8 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 @Repository
-public interface UtilisateurRepository extends JpaRepository<Compte, Long> {
+public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long> {
     Utilisateur findByNomUtilisateur(String nomUtilisateur);
+    Utilisateur findByNomUtilisateurOrEmail(String nomUtilisateur, String email);
     @Query("SELECT g FROM Gestionnaire g WHERE g.nomUtilisateur = :nomUtilisateur")
     Gestionnaire findGestionnaireByNomUtilisateur(String nomUtilisateur);
 }

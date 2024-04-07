@@ -12,12 +12,11 @@ public class UtilisateurService {
     public UtilisateurService(UtilisateurRepository utilisateurRepository) {
         this.utilisateurRepository = utilisateurRepository;
     }
-    public Utilisateur saveUpdateUtilisateur(UtilisateurDTO utilisateurDTO) {
+    public Utilisateur saveUtilisateur(UtilisateurDTO utilisateurDTO) throws Exception {
         Utilisateur utilisateur = utilisateurDTO.fromDTO(utilisateurDTO);
-        if (outils.anyFieldIsNull(utilisateurDTO)) {
-            throw new RuntimeException("Utilisateur n'est pas sauvegarde,car il contient des variables nulles");
+        if (isUnique(utilisateurDTO)){
+            utilisateurRepository.save(utilisateur);
         }
-        utilisateurRepository.save(utilisateur);
         return utilisateur;
     }
     public UtilisateurDTOGet getUtilisateurDTOGet(ConnectionRequest connectionRequest) throws Exception {
@@ -26,5 +25,18 @@ public class UtilisateurService {
            return utilisateur.toDTOGet(utilisateur);
        }
         throw new Exception("Username or password are incorrect.");
+    }
+
+    public boolean isUnique(UtilisateurDTO utilisateurDTO) throws Exception {
+        Utilisateur utilisateur = utilisateurRepository.findByNomUtilisateurOrEmail(utilisateurDTO.getNomUtilisateur(),utilisateurDTO.getEmail());
+        if (utilisateur != null){
+            if (utilisateur.getEmail().equals(utilisateurDTO.getEmail())) {
+            throw new Exception("Email already in use");
+        }
+            if (utilisateur.getNomUtilisateur().equals(utilisateurDTO.getNomUtilisateur())){
+                throw new Exception("Username already exists");
+            }
+        }
+        return true;
     }
 }

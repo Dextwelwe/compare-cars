@@ -73,7 +73,7 @@ select {
 
 .searchContainer {
     box-sizing: border-box;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 30px 60px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 20px 5px;
     position: relative;
     display: flex;
     justify-content: center;
@@ -82,7 +82,7 @@ select {
     gap: 10px;
     width: 1050px;
     height: 140px;
-    border-radius:5px
+    border-radius:5px;
 }
 
 @media screen and (max-width: 600px) {

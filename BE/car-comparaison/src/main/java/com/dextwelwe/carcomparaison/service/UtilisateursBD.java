@@ -28,11 +28,11 @@ public class UtilisateursBD implements CommandLineRunner {
         Gestionnaire gestionnaire = new Gestionnaire(1,"Danil","Moskalenko");
         Utilisateur utilisateur = new Utilisateur(2, "dex@gmail.com", "Daniel", "mossmoss", new ArrayList<>(), "nope");
         Utilisateur utilisateur2 = new Utilisateur(3, "Dex123@gmail.com", "Daniel123", "Moss123", new ArrayList<>(), "nope123");
-        Utilisateur utilisateur3 = new Utilisateur(4, "emailQuoi@hotmail.xz", "Daniel123", "Moss123", new ArrayList<>(), "nope123");
-        utilisateurRepository.save(gestionnaire);
-        utilisateurService.saveUpdateUtilisateur(utilisateur.toDTO(utilisateur));
-        utilisateurService.saveUpdateUtilisateur(utilisateur2.toDTO(utilisateur2));
-        utilisateurService.saveUpdateUtilisateur(utilisateur3.toDTO(utilisateur3));
+       // Utilisateur utilisateur3 = new Utilisateur(4, "emailQuoi@hotmail.xz", "Daniel123", "Moss123", new ArrayList<>(), "nope123");
+        //utilisateurRepository.save(gestionnaire);
+        utilisateurService.saveUtilisateur(utilisateur.toDTO(utilisateur));
+        utilisateurService.saveUtilisateur(utilisateur2.toDTO(utilisateur2));
+       // utilisateurService.saveUtilisateur(utilisateur3.toDTO(utilisateur3));
 
         Voiture Corolla = new Voiture(1, "Toyota", "2022", "Corolla", "LE","Compact sedan with excellent fuel efficiency.", EnumsVoiture.Transmission.Automatic, EnumsVoiture.Motricite.FWD, EnumsVoiture.TypeCarburant.GAS,"Sedan", "1.8L 4-cylinder" , 4 ,"30 mpg", "35 mpg","Backup camera,Lane departure warning", "Silver,Black,White", new ArrayList<>(), new ArrayList<>(), "20000$" );
         Voiture Civic = new Voiture(2, "Honda", "2023", "Civic", "Sport", "Sporty compact car with agile handling.", EnumsVoiture.Transmission.Manual, EnumsVoiture.Motricite.FWD, EnumsVoiture.TypeCarburant.GAS, "Hatchback", "2.0L 4-cylinder", 5, "32 mpg", "36 mpg", "Apple CarPlay, Android Auto", "Red,Blue,Gray", new ArrayList<>(), new ArrayList<>(), "22000$");

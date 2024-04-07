@@ -65,7 +65,7 @@ public class UtilisateurServiceTests {
     public void testSaveUtilisateur(){
         Utilisateur utilisateur = new Utilisateur(12343, "null", "null", "null", new ArrayList<>(), "null");
 
-        Utilisateur savedUtilisateur =  utilisateurService.saveUpdateUtilisateur(utilisateur.toDTO(utilisateur));
+        Utilisateur savedUtilisateur =  utilisateurService.saveUtilisateur(utilisateur.toDTO(utilisateur));
 
         assertNotNull(savedUtilisateur);
 
@@ -77,7 +77,7 @@ public class UtilisateurServiceTests {
     public void testSaveUtilisateurNull(){
         Utilisateur utilisateur = new Utilisateur(12343, null, "null", "null", new ArrayList<>(), "null");
         try {
-            Utilisateur savedUtilisateur = (Utilisateur) utilisateurService.saveUpdateUtilisateur(utilisateur.toDTO(utilisateur));
+            Utilisateur savedUtilisateur = (Utilisateur) utilisateurService.saveUtilisateur(utilisateur.toDTO(utilisateur));
             fail();
         } catch (Exception e){
             verify(utilisateurRepository, times(0)).save(utilisateur);

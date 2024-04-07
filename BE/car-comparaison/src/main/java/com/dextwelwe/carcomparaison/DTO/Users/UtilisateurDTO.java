@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -18,7 +20,7 @@ public class UtilisateurDTO extends CompteDto {
     public UtilisateurDTO(long id, String email, String nomUtilisateur, String motDePasse, List<RevueDTO> revues, String preferences) {
         super(id, nomUtilisateur, motDePasse);
         this.email = email;
-        this.revues = revues;
+        this.revues = Objects.requireNonNullElseGet(revues, ArrayList::new);
         this.preferences = preferences;
     }
     public Utilisateur fromDTO(UtilisateurDTO utilisateurDTO){
@@ -34,5 +36,9 @@ public class UtilisateurDTO extends CompteDto {
                 revues,
                 utilisateurDTO.getPreferences()
                );
+    }
+
+    public List<RevueDTO> getRevues() {
+        return Objects.requireNonNullElseGet(revues, ArrayList::new);
     }
 }

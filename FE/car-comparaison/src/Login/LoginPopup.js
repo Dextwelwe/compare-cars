@@ -86,9 +86,39 @@ export default function LoginPopup({closePopup, setUser, setIsLogged}) {
     }
 
     function handleSignUp(){
-       if (!validateEmail() | !validatePassword() | !validateUserName()){
-        console.log('f')
-       }
+       if (validateEmail() && validatePassword() && validateUserName()){
+        let requestData = {
+            nomUtilisateur : username,
+            motDePasse : password,
+            email : email
+        }
+        fetch('http://localhost:8080/api/utilisateur/signUp', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestData)
+        })
+        .then(response => {
+            if (response.ok) {
+                document.getElementById("connectionErr").style.display = "none";
+                    setIsLogged(true)
+                    setUser(username) 
+                    closePopup();
+            } 
+            if (response.status === 401) {
+                setConnectionErrorMessage("Username or Email are already in use.");
+                document.getElementById("connectionErr").style.display = "inline";
+            }
+        })
+        .then(data => {
+            console.log(data)
+        })
+        .catch(error => {
+           setConnectionErrorMessage("Internal server error. Please try again later.");
+           document.getElementById("connectionErr").style.display = "inline";
+        });
+    }
     }
 
     function validateUserName(){
@@ -111,10 +141,6 @@ export default function LoginPopup({closePopup, setUser, setIsLogged}) {
              setConnectionErrorMessage("Connection Error, please try again.");
         }
         errElement.style.display = "inline";
-    }
-
-    function clerErrConnection(){
-        setConnectionErrorMessage("");
     }
 
     function validateFormSignIn() {
@@ -158,8 +184,7 @@ export default function LoginPopup({closePopup, setUser, setIsLogged}) {
         } 
             setEmailError('');
             document.getElementById("emailErr").style.display = "none";
-            return true;
-        
+            return true; 
     }
 
     function validatePassword(){
@@ -212,13 +237,10 @@ export default function LoginPopup({closePopup, setUser, setIsLogged}) {
 
   return (
     <div id='frame'>
-      
       <div id='popup' className='content-box'>
-      
         <div className='closeButtonContainer'>     
       <button className='closePopup' onClick={closePopup}>&times;</button>
       </div>
-    
       <div id='popupContentWrapper'>
       <div id='popupContent'>
       <div>
@@ -255,6 +277,5 @@ export default function LoginPopup({closePopup, setUser, setIsLogged}) {
       </div>
       </div>
     </div>
-    
   )
 }
