@@ -25,6 +25,6 @@ public class UtilisateurService {
        if (utilisateur.getMotDePasse().equals(connectionRequest.getMotDePasse())){
            return utilisateur.toDTOGet(utilisateur);
        }
-        throw new Exception("Mot de passe incorrect");
+        throw new Exception("Username or password are incorrect.");
     }
 }

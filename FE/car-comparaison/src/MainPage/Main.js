@@ -2,6 +2,8 @@ import React , {useState} from 'react'
 import "./main.css"
 import "../global.css"
 import LoginPopup from '../Login/LoginPopup';
+import {Toaster} from "react-hot-toast";
+import {toast} from "react-hot-toast";
 
 export default function Main() {
 
@@ -16,24 +18,27 @@ export default function Main() {
 
   const updateUser = (username) => {
     setUserName(username);
+    toast.success("Successfuly connected.");
   };
 
   function handleMake(){
   }
 
+
   return (
     <div className="topDiv">
+        <Toaster position="top-center" reverseOrder={false} toastOptions={{style: {fontFamily: 'Cairo'}}}/>
         {isLoginOpen && <LoginPopup closePopup={toggleLoginPopup} setUser={updateUser} setIsLogged={setIsLogged} />}
         <div className='header'>
             <div className='divButtonHeader'>
-            <button className='button'>DISCOVER</button>
+            <button className='button'>Discover</button>
             {isLogged ? (
                  <button className='button' style={{borderColor : 'gold', borderStyle : 'solid'}}>{username}</button>) :
-           (<button className='button' onClick={toggleLoginPopup}>SIGN IN</button> )}
+           (<button className='button' onClick={toggleLoginPopup}>Sign In</button> )}
             </div>
             </div>
     <div className='content'>
-        <h1 style={{fontWeight : 'bold'}}>Search & Compare Cars</h1>
+        <h1 style={{fontWeight : 'bold'}}>Search Cars</h1>
     <div className='searchContainer'>
         <select name="car1" onClick={handleMake} >
             <option value="" >Make</option>
@@ -58,7 +63,7 @@ export default function Main() {
             <option value="bmw">BMW</option>
             <option value="mercedes">Mercedes</option>
         </select>
-            <button className='button' style={{boxShadow : 'none'}}>SEARCH</button>
+            <button className='button' style={{boxShadow : 'none'}}>Search</button>
         </div>
     </div>
     </div>

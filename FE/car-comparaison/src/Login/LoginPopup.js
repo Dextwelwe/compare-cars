@@ -15,7 +15,7 @@ export default function LoginPopup({closePopup, setUser, setIsLogged}) {
  const passwordRef = useRef(null);
  const emailRef = useRef(null);
 
- useEffect(() => {
+ useEffect(() => { 
         document.addEventListener('keydown', handleEscapeKey);
         // eslint-disable-next-line
     },[]);
@@ -53,6 +53,8 @@ export default function LoginPopup({closePopup, setUser, setIsLogged}) {
        motDePasse: password.trim()
     };
 
+    let message;
+
     fetch('http://localhost:8080/api/utilisateur/login', {
             method: 'POST',
             headers: {
@@ -61,20 +63,25 @@ export default function LoginPopup({closePopup, setUser, setIsLogged}) {
             body: JSON.stringify(connectionRequest)
         })
         .then(response => {
+            message = response;
             if (response.ok) {
                 return response.json();
+                
             } else {
-                showErrConnection(response);
+                return showErrConnection(message);
             }
         })
         .then(data => {
-            document.getElementById("connectionErr").style.display = "none";
-            setIsLogged(true)
-            setUser(username)
-            closePopup();
+            if (data){
+                    document.getElementById("connectionErr").style.display = "none";
+                    setIsLogged(true)
+                    setUser(username) 
+                    closePopup();
+            }
         })
         .catch(error => {
-            console.log(error)
+           setConnectionErrorMessage("Internal server error. Please try again later.");
+           document.getElementById("connectionErr").style.display = "inline";
         });
     }
 
@@ -104,6 +111,10 @@ export default function LoginPopup({closePopup, setUser, setIsLogged}) {
              setConnectionErrorMessage("Connection Error, please try again.");
         }
         errElement.style.display = "inline";
+    }
+
+    function clerErrConnection(){
+        setConnectionErrorMessage("");
     }
 
     function validateFormSignIn() {
@@ -201,7 +212,9 @@ export default function LoginPopup({closePopup, setUser, setIsLogged}) {
 
   return (
     <div id='frame'>
-      <div id='popup' className='content-box' >
+      
+      <div id='popup' className='content-box'>
+      
         <div className='closeButtonContainer'>     
       <button className='closePopup' onClick={closePopup}>&times;</button>
       </div>
@@ -226,17 +239,16 @@ export default function LoginPopup({closePopup, setUser, setIsLogged}) {
                 <p>Show Password</p>
                 <input type='checkbox' ref={checkboxRef} onClick={handleCheckbox}></input>
             </div>
-            <p id="connectionErr" className='errorMsg'>{connectionErrorMessage}</p>
+            <p id="connectionErr" className='errorMsg' style={{textAlign : "center"}}>{connectionErrorMessage}</p>
             </div>
             <div className='signButtons'>
                 { signIn ? (
         <button className='button' style={{width: '45%', boxShadow : 'none'}} onClick={handleSignUpButton} >Sign Up</button>) : (
-        <button className='button' style={{width: '45%', boxShadow : 'none'}} onClick={()=> setSignIn(true)} >Back</button>
+        <button className='button' style={{width: '45%', boxShadow : 'none'}} onClick={handleBack} >Back</button>
     )}  
         { signIn ? (
         <button className='button' style={{width: '45%', boxShadow : 'none'}} onClick={handleLogin} >Sign In</button>) :
          (<button className='button' style={{width: '45%', boxShadow : 'none'}} onClick={handleSignUp} >Sign Up</button>)
-
         }
         </div>
       </div>

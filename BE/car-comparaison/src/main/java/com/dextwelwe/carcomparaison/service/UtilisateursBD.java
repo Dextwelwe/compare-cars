@@ -26,7 +26,7 @@ public class UtilisateursBD implements CommandLineRunner {
     }
     public void createGestionnaire() throws Exception {
         Gestionnaire gestionnaire = new Gestionnaire(1,"Danil","Moskalenko");
-        Utilisateur utilisateur = new Utilisateur(2, "dex@gmail.com", "Daniel", "moss", new ArrayList<>(), "nope");
+        Utilisateur utilisateur = new Utilisateur(2, "dex@gmail.com", "Daniel", "mossmoss", new ArrayList<>(), "nope");
         Utilisateur utilisateur2 = new Utilisateur(3, "Dex123@gmail.com", "Daniel123", "Moss123", new ArrayList<>(), "nope123");
         Utilisateur utilisateur3 = new Utilisateur(4, "emailQuoi@hotmail.xz", "Daniel123", "Moss123", new ArrayList<>(), "nope123");
         utilisateurRepository.save(gestionnaire);
