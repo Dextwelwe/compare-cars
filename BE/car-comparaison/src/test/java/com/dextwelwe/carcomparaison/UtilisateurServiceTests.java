@@ -62,7 +62,7 @@ public class UtilisateurServiceTests {
     }
 
     @Test
-    public void testSaveUtilisateur(){
+    public void testSaveUtilisateur() throws Exception {
         Utilisateur utilisateur = new Utilisateur(12343, "null", "null", "null", new ArrayList<>(), "null");
 
         Utilisateur savedUtilisateur =  utilisateurService.saveUtilisateur(utilisateur.toDTO(utilisateur));

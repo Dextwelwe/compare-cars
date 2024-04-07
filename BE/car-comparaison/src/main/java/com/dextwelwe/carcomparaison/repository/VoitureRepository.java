@@ -8,10 +8,10 @@ import java.util.List;
 public interface VoitureRepository extends JpaRepository<Voiture, Long> {
     @Query("select distinct e.marque from Voiture e")
     List<String> getListeMarques();
-    @Query("select distinct e.modele from Voiture e where e.marque = :marque")
+    @Query("select distinct e.modele from Voiture e where e.marque =:marque")
     List<String> getListOfModels(String marque);
-    @Query("select distinct e.annee from Voiture e where e.modele = :modele")
-    List<String> getListOfModelYear(String modele);
+    @Query("select distinct e.annee from Voiture e where e.marque=:marque and e.modele = :modele")
+    List<String> getListOfModelYear(String marque, String modele);
     Voiture findByModeleAndVersion(String modele, String version);
 
 }

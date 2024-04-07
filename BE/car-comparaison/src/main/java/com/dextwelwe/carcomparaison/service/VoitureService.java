@@ -1,7 +1,11 @@
 package com.dextwelwe.carcomparaison.service;
+import com.dextwelwe.carcomparaison.DTO.Voiture.VoitureDto;
 import com.dextwelwe.carcomparaison.model.Voiture.Voiture;
 import com.dextwelwe.carcomparaison.repository.VoitureRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+
 @Service
 public class VoitureService {
     private final VoitureRepository voitureRepository;
@@ -18,5 +22,16 @@ public Voiture saveUpdateVoiture(Voiture voiture){
             voitureRepository.save(voiture);
         }
         return voiture;
+}
+public List<String> getListMakes(){
+   return voitureRepository.getListeMarques();
+}
+
+public List<String> getListModels(String marque){
+   return voitureRepository.getListOfModels(marque);
+}
+
+public List<String> getListModelYears(String marque, String modele){
+      return voitureRepository.getListOfModelYear(marque,modele);
 }
 }

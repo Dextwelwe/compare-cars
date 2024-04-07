@@ -1,17 +1,29 @@
-import React , {useState} from 'react'
+import React , {useState, useEffect, useRef} from 'react'
 import "./main.css"
 import "../global.css"
 import LoginPopup from '../Login/LoginPopup';
 import {Toaster} from "react-hot-toast";
 import {toast} from "react-hot-toast";
-import logo from '../images/logo4.png'
+import {getMakes, getModelYear, getModels} from './apiCalls';
+
 
 export default function Main() {
 
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
   const [username, setUserName] = useState("");
- // const [make, setMake] = []
+  const [selectedMake, setSelectedMake] = useState("");
+  const [selectedModel, setSelectedModel] = useState("Model");
+  const [makes, setMakes] = useState([])
+  const [models, setModels] = useState([])
+  const [years, setYears] = useState([])
+  const [isDisabled, setIsDisabled] = useState(true);
+  const [isDisabledYear, setIsDisabledYear] = useState(true);
+
+  useEffect(() => { 
+   handleMake()
+    // eslint-disable-next-line
+},[]);
 
   const toggleLoginPopup = () => {
     setIsLoginOpen(!isLoginOpen);
@@ -23,6 +35,25 @@ export default function Main() {
   };
 
   function handleMake(){
+    getMakes(setMakes);
+  }
+
+  function handleSelectModel(e){
+    console.log("ab")
+  setSelectedModel(e.target.value);
+  getModelYear(setYears, selectedMake, e.target.value);
+  if (isDisabledYear){setIsDisabledYear(false)}
+    } 
+  
+
+  function handleModel(e){
+    console.log(e.target.value)
+    if (e.target.value !== 'Make'){
+    setSelectedMake(e.target.value)
+    getModels(setModels,e.target.value);
+    if (isDisabled){setIsDisabled(false)}
+    setSelectedModel('Model')
+    }
   }
 
 
@@ -44,23 +75,23 @@ export default function Main() {
     <div >
       <div className='searchContainer'>
       <h2 id='titleSelect' style={{ display:'inline'}}>Find a car</h2>
-        <select name="car1" onClick={handleMake} >
-            <option value="" >Make</option>
-            <option value="audi">Audi</option>
-            <option value="bmw">BMW</option>
-            <option value="mercedes">Mercedes</option>
+        <select name="make"  onChange={handleModel} defaultValue={"Make"} >
+        <option value="Make" disabled>Make</option>
+        {makes.map((option, index) => (
+          <option key={index} value={option}>{option}</option>
+        ))}
         </select>
-        <select name="car1" disabled>
-            <option value="" >Model</option>
-            <option value="audi">Audi</option>
-            <option value="bmw">BMW</option>
-            <option value="mercedes">Mercedes</option>
+        <select id='model' name="model" disabled={isDisabled} value={selectedModel} onChange={handleSelectModel} >
+        <option value="Model" disabled>Model</option>
+        {models.map((option, index) => (
+          <option key={index} value={option}>{option}</option>
+        ))}
         </select>
-        <select name="car1" disabled>
+        <select name="car1" disabled={isDisabledYear}>
         <option value="" >Year</option>
-            <option value="audi">Audi</option>
-            <option value="bmw">BMW</option>
-            <option value="mercedes">Mercedes</option>
+        {years.map((option, index) => (
+          <option key={index} value={option}>{option}</option>
+        ))}
         </select>
         <select name="car1" disabled>
             <option value="audi">Trim</option>

@@ -70,6 +70,6 @@ public class UtilisateursBD implements CommandLineRunner {
         System.out.println("---------");
         System.out.println(voitureRepository.getListOfModels("Audi"));
         System.out.println("---------");
-        System.out.println(voitureRepository.getListOfModelYear("Mustang"));
+       // System.out.println(voitureRepository.getListOfModelYear("Mustang"));
     }
 }
