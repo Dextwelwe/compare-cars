@@ -4,8 +4,9 @@
     position: relative;
     background-color: #FFF7FC;
     align-items: center;
-    border-radius:17px;
+    border-radius:5px;
 }
+
 
 .input{
     background-color: #EEEEEE;
@@ -19,6 +20,25 @@
     box-sizing: content-box;
 }
 
+#footer {
+    width: 100%;
+    text-align : center;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 14px;
+}
+
+#logo {
+    width: 120px;
+    height:50px;
+    position: absolute;
+    left: 25px;
+    top:5px;
+    pointer-events: none;
+}
+
 .button{
     font-family: "Cairo", sans-serif;
      padding : 3px;
@@ -29,7 +49,8 @@
      height: 40px;
      border-radius: 20px;
      border-width: 1px;
-     width: 120px;
+     width: max-content;
+     width: 140px;
      border-color : transparent;
      background-color: #17B794;
      font-size: 15px;

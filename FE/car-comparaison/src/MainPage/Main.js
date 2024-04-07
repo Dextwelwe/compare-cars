@@ -4,6 +4,7 @@ import "../global.css"
 import LoginPopup from '../Login/LoginPopup';
 import {Toaster} from "react-hot-toast";
 import {toast} from "react-hot-toast";
+import logo from '../images/logo4.png'
 
 export default function Main() {
 
@@ -30,16 +31,19 @@ export default function Main() {
         <Toaster position="top-center" reverseOrder={false} toastOptions={{style: {fontFamily: 'Cairo'}}}/>
         {isLoginOpen && <LoginPopup closePopup={toggleLoginPopup} setUser={updateUser} setIsLogged={setIsLogged} />}
         <div className='header'>
+            <h1 id='titleHeader'>Search & Compare Cars</h1>
             <div className='divButtonHeader'>
             <button className='button'>Discover</button>
             {isLogged ? (
-                 <button className='button' style={{borderColor : 'gold', borderStyle : 'solid'}}>{username}</button>) :
+                 <button className='button'>{username}</button>) :
            (<button className='button' onClick={toggleLoginPopup}>Sign In</button> )}
             </div>
             </div>
     <div className='content'>
-        <h1 style={{fontWeight : 'bold'}}>Search Cars</h1>
-    <div className='searchContainer'>
+
+    <div >
+      <div className='searchContainer'>
+      <h2 id='titleSelect' style={{ display:'inline'}}>Find a car</h2>
         <select name="car1" onClick={handleMake} >
             <option value="" >Make</option>
             <option value="audi">Audi</option>
@@ -63,9 +67,12 @@ export default function Main() {
             <option value="bmw">BMW</option>
             <option value="mercedes">Mercedes</option>
         </select>
-            <button className='button' style={{boxShadow : 'none'}}>Search</button>
+            <button className='button' style={{boxShadow : 'none', marginTop : '30px'}}>Search</button>
+        </div>
         </div>
     </div>
+    <div id='footer'>Dextwelwe 2024</div>
+   
     </div>
   )
 }

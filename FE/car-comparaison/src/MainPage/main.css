@@ -4,14 +4,18 @@
     user-select: none;
 }
 
-h1 {
-    text-align: center;
-    margin-top: -40px;
-    margin-bottom: 5px;
-    font-size: 35px;
+#titleSelect {
+    text-align: start;
+    margin-top: -45px;
+    font-size: 20px;
+    font-weight: 300;
+    left : 5%;
+    position: absolute;
+    width: 100%;
 }
 
 select {
+    margin-top : 30px;
     transition: 0.5s ease;
     padding: 1px 1px 1px 1px;
     border-color: transparent;
@@ -22,7 +26,7 @@ select {
     height: 40px;
     border-radius: 20px;
     background-color: #EEEEEE;
-    background-image: url("../../images/caret-down-solid.svg");
+    background-image: url("../images/caret-down-solid.svg");
     background-repeat: no-repeat;
     background-position: right 12px top 51%;
     background-size: 0.65rem auto;
@@ -33,18 +37,32 @@ select {
 .content {
     position: absolute;
     left : 50%;
-    top : 50%;
-    transform: translate(-50%,-50%);
-    
+    top : 45%;
+    transform: translate(-50%,-45%);
 }
 
 .header {
-    width: 100%;
-    height : 100px;
+    margin-top : 5px;
+    width: 99%;
+    left: 50%;
+    transform: translate(-50%);
+    height : 70px;
     position: absolute;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;   
+    border-style: solid;
+    border : 0;
+   
+}
+
+#titleHeader {
+    font-weight: 200;
+    line-height: 0px;
+    pointer-events: none;
+    margin-left : 40px;
+    margin-top:10px;
+    
 }
 
 .divButtonHeader {
@@ -55,17 +73,16 @@ select {
 
 .searchContainer {
     box-sizing: border-box;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 80px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 30px 60px;
     position: relative;
-   
     display: flex;
     justify-content: center;
     background-color: #FFF7FC;
     align-items: center;
     gap: 10px;
     width: 1050px;
-    height: 100px;
-    border-radius:17px;
+    height: 140px;
+    border-radius:5px
 }
 
 @media screen and (max-width: 600px) {
