@@ -12,7 +12,6 @@ public class VoitureService {
     public VoitureService(VoitureRepository voitureRepository) {
         this.voitureRepository = voitureRepository;
     }
-    // Regarde si une voiture avec le meme modele et la meme version existe deja dans la bd
 public boolean checkForUniqueNameAndVersion(Voiture voiture){
        Voiture voitureTest = voitureRepository.findByModeleAndVersion(voiture.getModele(), voiture.getVersion());
        return voitureTest != null;
@@ -26,12 +25,13 @@ public Voiture saveUpdateVoiture(Voiture voiture){
 public List<String> getListMakes(){
    return voitureRepository.getListeMarques();
 }
-
 public List<String> getListModels(String marque){
    return voitureRepository.getListOfModels(marque);
 }
-
 public List<String> getListModelYears(String marque, String modele){
       return voitureRepository.getListOfModelYear(marque,modele);
+}
+public List<String> getListTrims(String marque, String modele, String annee){
+        return voitureRepository.findAllTrims(marque, modele, annee);
 }
 }

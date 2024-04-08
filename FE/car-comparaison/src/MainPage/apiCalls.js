@@ -16,12 +16,7 @@ export const getMakes = async(setMakes) => {
     }
 
 export const getModels = async (setModels, make) => {
-       fetch(`http://localhost:8080/api/voiture/getModels?make=` + make, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        })
+       fetch(`http://localhost:8080/api/voiture/getModels?make=` + make)
       .then(response => {
         if (!response.ok) {
         }
@@ -37,13 +32,7 @@ export const getModels = async (setModels, make) => {
     }
 
 export const getModelYear = async (setYears, make, model) => {
-    console.log(make, model)
-        fetch(`http://localhost:8080/api/voiture/getModelYears?make=` + make + `&model=` + model, {
-             method: 'POST',
-             headers: {
-                 'Content-Type': 'application/json'
-             },
-         })
+        fetch(`http://localhost:8080/api/voiture/getModelYears?make=` + make + `&model=` + model)
        .then(response => {
          if (!response.ok) {
          }
@@ -56,7 +45,26 @@ export const getModelYear = async (setYears, make, model) => {
        .catch(error => {
          console.error('There was a problem with the fetch operation:', error);
        });
-     }    
+     }  
+     
+    export const getTrims = async (setTrims, make, model, year) => {
+
+          fetch(`http://localhost:8080/api/voiture/getTrims?make=` + make + `&model=` + model + `&year=` + year)
+         .then(response => {
+           if (!response.ok) {
+           }
+           return response.json();
+         })
+         .then(data => {
+           console.log(data)
+           setTrims(data)
+         })
+         .catch(error => {
+           console.error('There was a problem with the fetch operation:', error);
+         });
+       }  
+
+
     
 
 

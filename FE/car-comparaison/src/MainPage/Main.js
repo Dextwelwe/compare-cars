@@ -4,7 +4,7 @@ import "../global.css"
 import LoginPopup from '../Login/LoginPopup';
 import {Toaster} from "react-hot-toast";
 import {toast} from "react-hot-toast";
-import {getMakes, getModelYear, getModels} from './apiCalls';
+import {getMakes, getModelYear, getModels, getTrims} from './apiCalls';
 
 
 export default function Main() {
@@ -12,16 +12,21 @@ export default function Main() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
   const [username, setUserName] = useState("");
-  const [selectedMake, setSelectedMake] = useState("");
+  const [selectedYear, setSelectedYear]= useState("Year");
+  const [selectedMake, setSelectedMake] = useState("Make");
   const [selectedModel, setSelectedModel] = useState("Model");
+  const [selectedTrim, setSelectedTrim]= useState("Trim");
   const [makes, setMakes] = useState([])
   const [models, setModels] = useState([])
   const [years, setYears] = useState([])
+  const [trims, setTrims] = useState([])
   const [isDisabled, setIsDisabled] = useState(true);
   const [isDisabledYear, setIsDisabledYear] = useState(true);
+  const [isDisabledTrim, setIsDisabledTrim] = useState(true);
+  const [isSearchDisabled, setIsSearchDisabled] = useState(true);
 
   useEffect(() => { 
-   handleMake()
+   getMakes(setMakes)
     // eslint-disable-next-line
 },[]);
 
@@ -34,16 +39,30 @@ export default function Main() {
     toast.success("Successfuly connected.");
   };
 
-  function handleMake(){
-    getMakes(setMakes);
+  function handleSelectModel(e){
+
+  getModelYear(setYears, selectedMake, e.target.value);
+  console.log(e.target.value)
+  console.log(selectedModel)
+    if (e.target.value !== selectedMake){
+      setSelectedYear('Year')
+      setSelectedTrim('Trim')
+    }
+    if (isDisabledYear){setIsDisabledYear(false)} ///else{ setIsDisabledYear(true); setSelectedYear('Year')}
+    if (isDisabledTrim){setIsDisabledTrim(false)} //else{setIsDisabledTrim(true); setSelectedTrim('Trim')}
+    
+  setSelectedModel(e.target.value);
+    } 
+  
+  function handleSelectYear(e){
+  setSelectedYear(e.target.value);
+  getTrims(setTrims, selectedMake, selectedModel, e.target.value);
+  console.log(e.target.value)
   }
 
-  function handleSelectModel(e){
-    console.log("ab")
-  setSelectedModel(e.target.value);
-  getModelYear(setYears, selectedMake, e.target.value);
-  if (isDisabledYear){setIsDisabledYear(false)}
-    } 
+  function handleSelectedTrim(e){
+    setSelectedTrim(e.target.value)
+  }
   
 
   function handleModel(e){
@@ -87,18 +106,19 @@ export default function Main() {
           <option key={index} value={option}>{option}</option>
         ))}
         </select>
-        <select name="car1" disabled={isDisabledYear}>
+        <select name="year" disabled={isDisabledYear} value={selectedYear} onChange={handleSelectYear}>
         <option value="" >Year</option>
         {years.map((option, index) => (
           <option key={index} value={option}>{option}</option>
         ))}
         </select>
-        <select name="car1" disabled>
+        <select name="trim" value={selectedTrim} disabled={isDisabledTrim} onChange={handleSelectedTrim} >
             <option value="audi">Trim</option>
-            <option value="bmw">BMW</option>
-            <option value="mercedes">Mercedes</option>
+            {trims.map((option, index) => (
+          <option key={index} value={option}>{option}</option>
+        ))}
         </select>
-            <button className='button' style={{boxShadow : 'none', marginTop : '30px'}}>Search</button>
+            <button className='button' style={{boxShadow : 'none', marginTop : '30px'}} disabled={isSearchDisabled}>Search</button>
         </div>
         </div>
     </div>

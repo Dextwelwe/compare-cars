@@ -52,7 +52,7 @@
      width: max-content;
      width: 140px;
      border-color : transparent;
-     background-color: #17B794;
+     background-color: grey;
      font-size: 15px;
      cursor:pointer;
      outline: none;
@@ -61,7 +61,21 @@
 
     .button:hover {
         background-color: #1acca5;
-    }    
+    }   
+    
+    .button:not([disabled]) {
+        background-color: #17B794;
+    }
+    .button:hover:not([disabled]) {
+      background-color: #1acca5;
+    }
+
+    .button:hover {
+        background-color: #1acca5;
+    }  
+
+    
+
 
     @media screen and (max-width: 1050px) {
 

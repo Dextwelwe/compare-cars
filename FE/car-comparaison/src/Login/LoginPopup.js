@@ -122,6 +122,11 @@ export default function LoginPopup({closePopup, setUser, setIsLogged}) {
     }
 
     function validateUserName(){
+        if (username.trim === ''){
+            setUsernameError('*Please enter the username');
+            document.getElementById("usernameErr").style.display = "inline";
+            return false;
+        }
         if (username.trim().length < 5 || username.trim().length > 20) {
             setUsernameError('*Username length must be between 5 and 20 characters.');
             document.getElementById("usernameErr").style.display = "inline";

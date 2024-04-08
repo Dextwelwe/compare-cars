@@ -12,6 +12,7 @@ public interface VoitureRepository extends JpaRepository<Voiture, Long> {
     List<String> getListOfModels(String marque);
     @Query("select distinct e.annee from Voiture e where e.marque=:marque and e.modele = :modele")
     List<String> getListOfModelYear(String marque, String modele);
+    @Query("select distinct e.version from Voiture e where e.marque=:marque and e.modele =:modele and e.annee=:annee")
+    List<String> findAllTrims(String marque, String modele, String annee);
     Voiture findByModeleAndVersion(String modele, String version);
-
 }
