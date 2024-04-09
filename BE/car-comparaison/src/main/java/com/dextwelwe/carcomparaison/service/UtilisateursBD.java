@@ -39,6 +39,7 @@ public class UtilisateursBD implements CommandLineRunner {
         Voiture ModelS = new Voiture(3, "Tesla", "2024", "Model S", "Long Range", "Luxury electric sedan with cutting-edge technology.", EnumsVoiture.Transmission.Electric, EnumsVoiture.Motricite.AWD, EnumsVoiture.TypeCarburant.ELECTRIC, "Sedan", "Dual Motor", 4, "none", "none", "Autopilot,Full self-driving capability", "Black,White,Blue", new ArrayList<>(), new ArrayList<>(), "80000$");
         Voiture Mustang = new Voiture(4, "Ford", "2022", "Mustang", "GT", "Iconic American muscle car with powerful V8 engine.", EnumsVoiture.Transmission.Manual, EnumsVoiture.Motricite.RWD, EnumsVoiture.TypeCarburant.GAS, "Coupe", "5.0L V8", 2, "20 mpg", "25 mpg", "Track package available", "Yellow,Red,Black", new ArrayList<>(), new ArrayList<>(), "40000$");
         Voiture Mustang22 = new Voiture(10, "Ford", "2023", "Mustang", "GT", "Iconic American muscle car with powerful V8 engine.", EnumsVoiture.Transmission.Manual, EnumsVoiture.Motricite.RWD, EnumsVoiture.TypeCarburant.GAS, "Coupe", "5.0L V8", 2, "20 mpg", "25 mpg", "Track package available", "Yellow,Red,Black", new ArrayList<>(), new ArrayList<>(), "40000$");
+        Voiture Mustang223 = new Voiture(11, "Ford", "2024", "Mustang2", "GT", "Iconic American muscle car with powerful V8 engine.", EnumsVoiture.Transmission.Manual, EnumsVoiture.Motricite.RWD, EnumsVoiture.TypeCarburant.GAS, "Coupe", "5.0L V8", 2, "20 mpg", "25 mpg", "Track package available", "Yellow,Red,Black", new ArrayList<>(), new ArrayList<>(), "40000$");
         Voiture voiture5 = new Voiture(5, "BMW", "2022", "3 Series", "330i","Luxury sedan with strong performance and upscale interior", EnumsVoiture.Transmission.Manual, EnumsVoiture.Motricite.RWD, EnumsVoiture.TypeCarburant.GAS, "Sedan", "2.0L turbocharged 4-cylinder", 4, "29 mpg", "34 mpg", "Leather upholstery,Navigation system","Black,White,Silver",new ArrayList<>(), new ArrayList<>(), "45000$");
         Voiture voiture6 = new Voiture(6, "Audi", "2012", "vers1", "a4");
         Voiture voiture7 = new Voiture(7, "Audi", "2012", "vers2", "a5");
@@ -50,6 +51,7 @@ public class UtilisateursBD implements CommandLineRunner {
         voitureRepository.save(ModelS);
         voitureRepository.save(Mustang);
         voitureRepository.save(Mustang22);
+        voitureRepository.save(Mustang223);
         voitureRepository.save(voiture5);
         voitureRepository.save(voiture6);
         voitureRepository.save(voiture7);

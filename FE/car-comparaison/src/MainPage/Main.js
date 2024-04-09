@@ -39,25 +39,32 @@ export default function Main() {
     toast.success("Successfuly connected.");
   };
 
-  function handleSelectModel(e){
+  function handleSelectMake(e){
+      setSelectedYear('Year')
+      setSelectedTrim('Trim')
+  }
 
+  function handleSelectModel(e){
   getModelYear(setYears, selectedMake, e.target.value);
-  console.log(e.target.value)
-  console.log(selectedModel)
+    setIsDisabledTrim(true)
+    setIsDisabledYear(false)
     if (e.target.value !== selectedMake){
       setSelectedYear('Year')
       setSelectedTrim('Trim')
     }
-    if (isDisabledYear){setIsDisabledYear(false)} ///else{ setIsDisabledYear(true); setSelectedYear('Year')}
-    if (isDisabledTrim){setIsDisabledTrim(false)} //else{setIsDisabledTrim(true); setSelectedTrim('Trim')}
+     ///else{ setIsDisabledYear(true); setSelectedYear('Year')}
+     //else{setIsDisabledTrim(true); setSelectedTrim('Trim')}
     
   setSelectedModel(e.target.value);
     } 
   
   function handleSelectYear(e){
-  setSelectedYear(e.target.value);
   getTrims(setTrims, selectedMake, selectedModel, e.target.value);
-  console.log(e.target.value)
+  setIsDisabledTrim(false)
+  if (e.target.value !== selectedYear){
+    setSelectedTrim('Trim')
+  }
+  setSelectedYear(e.target.value);
   }
 
   function handleSelectedTrim(e){
@@ -65,13 +72,18 @@ export default function Main() {
   }
   
 
-  function handleModel(e){
+  function handleSelectMake(e){
+    setSelectedYear('Year')
+    setSelectedTrim('Trim')
+    setSelectedModel('Model')
+    setIsDisabledYear(true)
+    setIsDisabledTrim(true)
     console.log(e.target.value)
     if (e.target.value !== 'Make'){
     setSelectedMake(e.target.value)
     getModels(setModels,e.target.value);
     if (isDisabled){setIsDisabled(false)}
-    setSelectedModel('Model')
+    
     }
   }
 
@@ -94,7 +106,7 @@ export default function Main() {
     <div >
       <div className='searchContainer'>
       <h2 id='titleSelect' style={{ display:'inline'}}>Find a car</h2>
-        <select name="make"  onChange={handleModel} defaultValue={"Make"} >
+        <select name="make"  onChange={handleSelectMake} defaultValue={"Make"} >
         <option value="Make" disabled>Make</option>
         {makes.map((option, index) => (
           <option key={index} value={option}>{option}</option>
