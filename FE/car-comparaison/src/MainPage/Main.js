@@ -52,10 +52,8 @@ export default function Main() {
     if (e.target.value !== selectedMake){
       setSelectedYear('Year')
       setSelectedTrim('Trim')
+      setIsSearchDisabled(true)
     }
-     ///else{ setIsDisabledYear(true); setSelectedYear('Year')}
-     //else{setIsDisabledTrim(true); setSelectedTrim('Trim')}
-    
   setSelectedModel(e.target.value);
     } 
   
@@ -66,6 +64,7 @@ export default function Main() {
     setSelectedTrim('Trim')
   }
   setSelectedYear(e.target.value);
+  setIsSearchDisabled(false)
   }
 
   function handleSelectedTrim(e){
@@ -84,8 +83,8 @@ export default function Main() {
     setSelectedMake(e.target.value)
     getModels(setModels,e.target.value);
     if (isDisabled){setIsDisabled(false)}
-    
     }
+    setIsSearchDisabled(true)
   }
 
 

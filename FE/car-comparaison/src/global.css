@@ -57,21 +57,17 @@
      cursor:pointer;
      outline: none;
      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    }
-
-    .button:hover {
-        background-color: #1acca5;
-    }   
+     cursor: not-allowed;
+    }  
     
     .button:not([disabled]) {
         background-color: #17B794;
+        cursor: pointer;
     }
     .button:hover:not([disabled]) {
       background-color: #1acca5;
     }
 
-    .button:hover {
-        background-color: #1acca5;
-    }  
+ 
 
     
