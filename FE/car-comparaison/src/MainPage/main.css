@@ -11,7 +11,7 @@
     font-weight: 300;
     left : 5%;
     position: absolute;
-    width: 100%;
+    
 }
 
 .optionsUser {
@@ -97,13 +97,13 @@ select {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    overflow-y: scroll;
+    overflow-y: auto;
     }
    
     .divButtonHeader {
         width: 60%;
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
         align-items: center;
         margin:0;
         margin-top : 20px;
@@ -123,6 +123,7 @@ select {
 
     #titleHeader {
         margin-left : 0;
+        
     }
 
     .content > div {
@@ -169,32 +170,89 @@ select {
     }
     #searchButton {
         margin-bottom : 10px;
+        width: 90%;
     }
 }
 
-@media screen and (min-width: 601px) and (max-width: 1050px) {
-    .divButtonHeader {
-        width: 60%;
+@media screen and (min-width: 601px) and (max-width: 1095px) {
+    
+    .topDiv {
         display: flex;
-        justify-content: flex-end;
+        flex-direction: column;
+        justify-content: space-between;
         align-items: center;
-        margin:0;
-        margin-top : 20px;
+        overflow-y: auto;
+        }
+       
+        .divButtonHeader {
+            width: max-content;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin:0;
+            margin-right: 40px;;
+        }
+        #titleHeader{
+            line-height: 30px;
+            margin-right : 10px;
+        }
+        .header {
+            margin-top: 20px;
+            width: 100%;
+            justify-content: space-between;
+            position: relative;
+            left : unset;
+            transform: unset;
+            height: max-content;
+            margin-bottom : 10px;
+        }
+        .content > div {
+            width: 100%;
+            
+        }
+    
+        .searchContainer {
+                width:100%;
+                flex-direction: column;
+                flex-wrap: wrap;
+                height: 100%;
+        }
+        
+        #searchButton {
+            width: 90%;
+            margin-bottom : 10px;
+        }
+    
+        #titleSelect {
+            position: relative;
+            width: max-content;
+            left : 0%;
+            transform: translate(0,150%);
+            margin: 0;
+            line-height: 10px;
+        }
+    
+        .content {
+            width: 85%;
+            height: max-content;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: unset;
+            left: unset;
+            top: unset;
+            position: relative;
+        }
+    
+        #footer {
+            margin-top : 10px;
+            position: relative !important;
+        }
+        select {
+            width: 90%;
+            height : 45px;
+        }
        
     }
-    
-    .header {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .searchContainer{
-        width: 95%;
-        flex-direction: column;
-        height: 300px;
-    }
-    select {
-        width: 90%;
-        height : 45px;
-    }
-}
+  
