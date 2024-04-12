@@ -14,7 +14,11 @@
     width: 100%;
 }
 
-
+.optionsUser {
+    width: 10px;
+    height: 10px;
+    right: 0;
+}
 
 select {
     size: 20px;
@@ -88,33 +92,87 @@ select {
 }
 
 @media screen and (max-width: 600px) {
-
+    .topDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow-y: scroll;
+    }
+   
     .divButtonHeader {
         width: 60%;
         display: flex;
         justify-content: flex-end;
         align-items: center;
         margin:0;
-        margin-top : 50px;
-       
+        margin-top : 20px;
     }
     
     .header {
         width: 100%;
         justify-content: center;
+        flex-wrap: wrap;
+        margin-top : 20px;
+        position: relative;
+        left : unset;
+        transform: unset;
+        height: max-content;
+        margin-bottom : 10px;
+    }
+
+    #titleHeader {
+        margin-left : 0;
+    }
+
+    .content > div {
+        width: 100%;
+        
+    }
+
+    .searchContainer {
+            width:100%;
+            flex-direction: column;
+            height: 100%;
+    }
+
+    #titleSelect {
+        position: relative;
+        width: max-content;
+        left : 0%;
+        transform: translate(0,150%);
+        margin: 0;
+        line-height: 10px;
     }
 
     .content {
-        width: 80%;
+        width: 85%;
+        height: max-content;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        transform: unset;
+        left: unset;
+        top: unset;
+        position: relative;
     }
-    
+
+    #footer {
+        margin-top : 10px;
+        position: relative !important;
+       
+    }
+    select {
+        width: 90%;
+        height : 45px;
+    }
+    #searchButton {
+        margin-bottom : 10px;
+    }
 }
 
-@media screen and (max-width: 1050px) {
+@media screen and (min-width: 601px) and (max-width: 1050px) {
     .divButtonHeader {
         width: 60%;
         display: flex;

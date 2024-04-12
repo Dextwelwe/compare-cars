@@ -5,6 +5,7 @@ import LoginPopup from '../Login/LoginPopup';
 import {Toaster} from "react-hot-toast";
 import {toast} from "react-hot-toast";
 import {getMakes, getModelYear, getModels, getTrims} from './apiCalls';
+import arrowDown from '../images/caret-down-solid.svg'
 
 
 export default function Main() {
@@ -97,8 +98,9 @@ export default function Main() {
             <div className='divButtonHeader'>
             <button className='button'>Discover</button>
             {isLogged ? (
-                 <button className='button'>{username}</button>) :
-           (<button className='button' onClick={toggleLoginPopup}>Sign In</button> )}
+                 <button className='button' type='button' style={{gap : '5px'}}>{username} <span><img className='optionsUser' src={arrowDown}></img></span></button>) :
+          (
+           <button type='button' className='button' onClick={toggleLoginPopup}>Sign In </button> )}
             </div>
             </div>
     <div className='content'>
@@ -130,7 +132,7 @@ export default function Main() {
           <option key={index} value={option}>{option}</option>
         ))}
         </select>
-            <button className='button' style={{boxShadow : 'none', marginTop : '30px'}} disabled={isSearchDisabled}>Search</button>
+            <button id="searchButton" className='button' style={{boxShadow : 'none', marginTop : '30px'}} disabled={isSearchDisabled}>Search</button>
         </div>
         </div>
     </div>
