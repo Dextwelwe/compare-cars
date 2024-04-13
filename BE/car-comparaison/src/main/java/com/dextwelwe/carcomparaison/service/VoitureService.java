@@ -5,6 +5,7 @@ import com.dextwelwe.carcomparaison.repository.VoitureRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class VoitureService {
@@ -33,5 +34,13 @@ public List<String> getListModelYears(String marque, String modele){
 }
 public List<String> getListTrims(String marque, String modele, String annee){
         return voitureRepository.findAllTrims(marque, modele, annee);
+}
+public VoitureDto getCar(Long id){
+        Optional<Voiture> voiture = voitureRepository.findById(id);
+        return voiture.get().toDTO(voiture.get());
+}
+
+public long getCarId(String marque, String modele, String annee, String version){
+        return voitureRepository.findId(marque, modele, annee, version);
 }
 }

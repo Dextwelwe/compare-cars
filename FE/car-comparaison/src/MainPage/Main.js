@@ -4,8 +4,9 @@ import "../global.css"
 import LoginPopup from '../Login/LoginPopup';
 import {Toaster} from "react-hot-toast";
 import {toast} from "react-hot-toast";
-import {getMakes, getModelYear, getModels, getTrims} from './apiCalls';
+import {getMakes, getModelYear, getModels, getTrims,getCarId} from './apiCalls';
 import arrowDown from '../images/caret-down-solid.svg'
+import { useNavigate} from 'react-router-dom';
 
 
 export default function Main() {
@@ -25,6 +26,9 @@ export default function Main() {
   const [isDisabledYear, setIsDisabledYear] = useState(true);
   const [isDisabledTrim, setIsDisabledTrim] = useState(true);
   const [isSearchDisabled, setIsSearchDisabled] = useState(true);
+  const carId = useRef()
+  const navigate = useNavigate();
+
 
   useEffect(() => { 
    getMakes(setMakes)
@@ -70,7 +74,11 @@ export default function Main() {
   function handleSelectedTrim(e){
     setSelectedTrim(e.target.value)
   }
-  
+
+  async function handleCarSearch(){
+    await getCarId(carId, selectedMake,selectedModel,selectedYear,selectedTrim);
+    navigate('/cars/' + carId.current);
+  }
 
   function handleSelectMake(e){
     setSelectedYear('Year')
@@ -86,7 +94,6 @@ export default function Main() {
     }
     setIsSearchDisabled(true)
   }
-
 
   return (
     <div className="topDiv">
@@ -131,7 +138,7 @@ export default function Main() {
           <option key={index} value={option}>{option}</option>
         ))}
         </select>
-            <button id="searchButton" className='button' style={{boxShadow : 'none', marginTop : '30px'}} disabled={isSearchDisabled}>Search</button>
+            <button id="searchButton" className='button' style={{boxShadow : 'none', marginTop : '30px'}} disabled={isSearchDisabled} onClick={handleCarSearch}>Search</button>
         </div>
         </div>
     </div>

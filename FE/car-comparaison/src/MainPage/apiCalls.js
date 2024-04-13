@@ -64,7 +64,14 @@ export const getModelYear = async (setYears, make, model) => {
          });
        }  
 
+    export const getCarId = async (setCarId, make,model,year,trim) => {
+     const response = await fetch(`http://localhost:8080/api/voiture/getCarId?make=` + make + `&model=` + model + `&year=` + year + `&trim=` + trim)
+     const data = await response.json();    
+     setCarId.current = data;   
+     console.log(data)
+    }   
 
+    
     
 
 
