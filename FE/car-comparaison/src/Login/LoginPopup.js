@@ -263,7 +263,7 @@ export default function LoginPopup({closePopup, setUser, setIsLogged}) {
             <input id='password' ref={passwordRef} className='input' type="password" placeholder={signIn? "Password" : "Password*"} onChange={handlePassword} value={password}></input>
             <p id="passwordErr" className="errorMsg" style={{textAlign: 'start'}}>{passwordError}</p>
             <div className='showPassword'>
-                <p>Show Password</p>
+                <p style={{marginTop: 'auto'}}>Show Password</p>
                 <input type='checkbox' ref={checkboxRef} onClick={handleCheckbox}></input>
             </div>
             <p id="connectionErr" className='errorMsg' style={{textAlign : "center"}}>{connectionErrorMessage}</p>

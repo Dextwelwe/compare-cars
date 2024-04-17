@@ -1,0 +1,68 @@
+.rootCarView {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.contentContainer {
+    margin-top : 90px;
+    margin-bottom : 15px;
+    background-color: #FFFBF5;
+    width: 80%;
+    height: 95%;
+    border-radius: 5px;
+    padding : 25px;
+    box-sizing: border-box;
+}
+
+.row1{
+   
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.row2 {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: start;
+}
+
+.row3 {
+flex-wrap: wrap;
+display: flex;
+justify-content: space-between;
+height: 300px;
+}
+
+.generalInfo {
+    width: 45%;
+    height: 300px;
+    background-color: aquamarine;
+}
+
+.advantages {
+height: 150px;
+background-color: yellowgreen;
+}
+
+.disadvantages {
+height: 150px;
+background-color: burlywood;
+}
+
+.proCons {
+    flex-wrap: wrap;
+    width: 45%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.reviews{
+    height: 500px;
+}
+

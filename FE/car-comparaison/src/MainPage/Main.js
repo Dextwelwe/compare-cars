@@ -1,19 +1,13 @@
 import React , {useState, useEffect, useRef} from 'react'
 import "./main.css"
 import "../global.css"
-import LoginPopup from '../Login/LoginPopup';
-import {Toaster} from "react-hot-toast";
-import {toast} from "react-hot-toast";
 import {getMakes, getModelYear, getModels, getTrims,getCarId} from './apiCalls';
-import arrowDown from '../images/caret-down-solid.svg'
 import { useNavigate} from 'react-router-dom';
+import Header from '../header/Header';
 
 
 export default function Main() {
 
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const [isLogged, setIsLogged] = useState(false);
-  const [username, setUserName] = useState("");
   const [selectedYear, setSelectedYear]= useState("Year");
   const [selectedMake, setSelectedMake] = useState("Make");
   const [selectedModel, setSelectedModel] = useState("Model");
@@ -29,20 +23,11 @@ export default function Main() {
   const carId = useRef()
   const navigate = useNavigate();
 
-
   useEffect(() => { 
    getMakes(setMakes)
     // eslint-disable-next-line
 },[]);
 
-  const toggleLoginPopup = () => {
-    setIsLoginOpen(!isLoginOpen);
-  }; 
-
-  const updateUser = (username) => {
-    setUserName(username);
-    toast.success("Successfuly connected.");
-  };
 
   function handleSelectMake(e){
       setSelectedYear('Year')
@@ -97,18 +82,7 @@ export default function Main() {
 
   return (
     <div className="topDiv">
-        <Toaster position="top-center" reverseOrder={false} toastOptions={{style: {fontFamily: 'Cairo'}}}/>
-        {isLoginOpen && <LoginPopup closePopup={toggleLoginPopup} setUser={updateUser} setIsLogged={setIsLogged} />}
-        <div className='header'>
-            <h1 id='titleHeader'>Search & Compare Cars</h1>
-            <div className='divButtonHeader'>
-            <button className='button'>Discover</button>
-            {isLogged ? (
-                 <button className='button' type='button' style={{gap : '5px'}}>{username} <span><img className='optionsUser' src={arrowDown}></img></span></button>) :
-          (
-           <button type='button' className='button' onClick={toggleLoginPopup}>Sign In </button> )}
-            </div>
-            </div>
+      <Header></Header>       
     <div className='content'>
 
     <div >
