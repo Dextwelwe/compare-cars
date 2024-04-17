@@ -9,7 +9,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.lang.NonNull;
-
 import java.util.List;
 @Entity
 @Data
@@ -27,6 +26,8 @@ public class Voiture {
     @NonNull
     private String version;
     private String description;
+    private  String avantages;
+    private String desavantages;
     private EnumsVoiture.Transmission transmission;
     private EnumsVoiture.Motricite motricite;
     private EnumsVoiture.TypeCarburant typeCarburant;
@@ -44,6 +45,9 @@ public class Voiture {
     @ToString.Exclude
     private List<Rating> note;
     private String MSRP;
+    private String puissance;
+    private String couple;
+    private String autonomie;
 
     public Voiture(long id, String marque, String annee, String version, String modele) {
     this.id = id;
@@ -61,6 +65,8 @@ public class Voiture {
                 voiture.getModele(),
                 voiture.getVersion(),
                 voiture.getDescription(),
+                voiture.getAvantages(),
+                voiture.getDesavantages(),
                 voiture.getTransmission().toString(),
                 voiture.getMotricite().toString(),
                 voiture.getTypeCarburant().toString(),
@@ -73,7 +79,10 @@ public class Voiture {
                 voiture.getCouleurs(),
                 voiture.getImages(),
                 voiture.getNote(),
-                voiture.getMSRP()
+                voiture.getMSRP(),
+                voiture.getPuissance(),
+                voiture.getCouple(),
+                voiture.getAutonomie()
         );
     }
     public VoitureDto toDTOMin(Voiture voiture){

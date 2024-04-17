@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
-
 @Entity
 @Data
 @NoArgsConstructor

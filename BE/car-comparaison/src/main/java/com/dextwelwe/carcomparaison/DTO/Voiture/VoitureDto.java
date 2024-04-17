@@ -14,6 +14,8 @@ public class VoitureDto {
     private String modele;
     private String version;
     private String description;
+    private String avantages;
+    private String desavantages;
     private String transmission;
     private String motricite;
     private String typeCarburant;
@@ -27,6 +29,9 @@ public class VoitureDto {
     private List<Image> images;
     private List<Rating> note;
     private String MSRP;
+    private String puissance;
+    private String couple;
+    private String autonomie;
 
     public VoitureDto(long id, String marque, String annee, String version, String modele) {
         this.id = id;
@@ -35,7 +40,6 @@ public class VoitureDto {
         this.version = version;
         this.modele = modele;
     }
-
     public Voiture fromDTOMin(VoitureDto voitureDto){
         return new Voiture(
                 voitureDto.getId(),

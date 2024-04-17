@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class UtilisateurService {
     private final UtilisateurRepository utilisateurRepository;
-    private final Outils outils = new Outils();
     public UtilisateurService(UtilisateurRepository utilisateurRepository) {
         this.utilisateurRepository = utilisateurRepository;
     }

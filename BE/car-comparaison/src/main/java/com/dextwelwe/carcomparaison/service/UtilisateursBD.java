@@ -28,19 +28,17 @@ public class UtilisateursBD implements CommandLineRunner {
         Gestionnaire gestionnaire = new Gestionnaire(1,"Danil","Moskalenko");
         Utilisateur utilisateur = new Utilisateur(2, "dex@gmail.com", "Daniel", "mossmoss", new ArrayList<>(), "nope");
         Utilisateur utilisateur2 = new Utilisateur(3, "Dex123@gmail.com", "Daniel123", "Moss123", new ArrayList<>(), "nope123");
-       // Utilisateur utilisateur3 = new Utilisateur(4, "emailQuoi@hotmail.xz", "Daniel123", "Moss123", new ArrayList<>(), "nope123");
-        //utilisateurRepository.save(gestionnaire);
+
         utilisateurService.saveUtilisateur(utilisateur.toDTO(utilisateur));
         utilisateurService.saveUtilisateur(utilisateur2.toDTO(utilisateur2));
-       // utilisateurService.saveUtilisateur(utilisateur3.toDTO(utilisateur3));
 
-        Voiture Corolla = new Voiture(1, "Toyota", "2022", "Corolla", "LE","Compact sedan with excellent fuel efficiency.", EnumsVoiture.Transmission.Automatic, EnumsVoiture.Motricite.FWD, EnumsVoiture.TypeCarburant.GAS,"Sedan", "1.8L 4-cylinder" , 4 ,"30 mpg", "35 mpg","Backup camera,Lane departure warning", "Silver,Black,White", new ArrayList<>(), new ArrayList<>(), "20000$" );
-        Voiture Civic = new Voiture(2, "Honda", "2023", "Civic", "Sport", "Sporty compact car with agile handling.", EnumsVoiture.Transmission.Manual, EnumsVoiture.Motricite.FWD, EnumsVoiture.TypeCarburant.GAS, "Hatchback", "2.0L 4-cylinder", 5, "32 mpg", "36 mpg", "Apple CarPlay, Android Auto", "Red,Blue,Gray", new ArrayList<>(), new ArrayList<>(), "22000$");
-        Voiture ModelS = new Voiture(3, "Tesla", "2024", "Model S", "Long Range", "Luxury electric sedan with cutting-edge technology.", EnumsVoiture.Transmission.Electric, EnumsVoiture.Motricite.AWD, EnumsVoiture.TypeCarburant.ELECTRIC, "Sedan", "Dual Motor", 4, "none", "none", "Autopilot,Full self-driving capability", "Black,White,Blue", new ArrayList<>(), new ArrayList<>(), "80000$");
-        Voiture Mustang = new Voiture(4, "Ford", "2022", "Mustang", "GT", "Iconic American muscle car with powerful V8 engine.", EnumsVoiture.Transmission.Manual, EnumsVoiture.Motricite.RWD, EnumsVoiture.TypeCarburant.GAS, "Coupe", "5.0L V8", 2, "20 mpg", "25 mpg", "Track package available", "Yellow,Red,Black", new ArrayList<>(), new ArrayList<>(), "40000$");
-        Voiture Mustang22 = new Voiture(10, "Ford", "2023", "Mustang", "GT", "Iconic American muscle car with powerful V8 engine.", EnumsVoiture.Transmission.Manual, EnumsVoiture.Motricite.RWD, EnumsVoiture.TypeCarburant.GAS, "Coupe", "5.0L V8", 2, "20 mpg", "25 mpg", "Track package available", "Yellow,Red,Black", new ArrayList<>(), new ArrayList<>(), "40000$");
-        Voiture Mustang223 = new Voiture(11, "Ford", "2024", "Mustang2", "GT", "Iconic American muscle car with powerful V8 engine.", EnumsVoiture.Transmission.Manual, EnumsVoiture.Motricite.RWD, EnumsVoiture.TypeCarburant.GAS, "Coupe", "5.0L V8", 2, "20 mpg", "25 mpg", "Track package available", "Yellow,Red,Black", new ArrayList<>(), new ArrayList<>(), "40000$");
-        Voiture voiture5 = new Voiture(5, "BMW", "2022", "3 Series", "330i","Luxury sedan with strong performance and upscale interior", EnumsVoiture.Transmission.Manual, EnumsVoiture.Motricite.RWD, EnumsVoiture.TypeCarburant.GAS, "Sedan", "2.0L turbocharged 4-cylinder", 4, "29 mpg", "34 mpg", "Leather upholstery,Navigation system","Black,White,Silver",new ArrayList<>(), new ArrayList<>(), "45000$");
+        Voiture Corolla = new Voiture(1, "Toyota", "2022", "Corolla", "LE","Compact sedan with excellent fuel efficiency.","","", EnumsVoiture.Transmission.Automatic, EnumsVoiture.Motricite.FWD, EnumsVoiture.TypeCarburant.GAS,"Sedan", "1.8L 4-cylinder" , 4 ,"30 mpg", "35 mpg","Backup camera,Lane departure warning", "Silver,Black,White", new ArrayList<>(), new ArrayList<>(), "20000$", "150hp", "124" , "123");
+        Voiture Civic = new Voiture(2, "Honda", "2023", "Civic", "Sport", "Sporty compact car with agile handling.","","", EnumsVoiture.Transmission.Manual, EnumsVoiture.Motricite.FWD, EnumsVoiture.TypeCarburant.GAS, "Hatchback", "2.0L 4-cylinder", 5, "32 mpg", "36 mpg", "Apple CarPlay, Android Auto", "Red,Blue,Gray", new ArrayList<>(), new ArrayList<>(), "22000$", "123", "123", "123");
+        Voiture ModelS = new Voiture(3, "Tesla", "2024", "Model S", "Long Range", "Luxury electric sedan with cutting-edge technology.","","", EnumsVoiture.Transmission.Electric, EnumsVoiture.Motricite.AWD, EnumsVoiture.TypeCarburant.ELECTRIC, "Sedan", "Dual Motor", 4, "none", "none", "Autopilot,Full self-driving capability", "Black,White,Blue", new ArrayList<>(), new ArrayList<>(), "80000$","123", "123", "123");
+       Voiture Mustang = new Voiture(4, "Ford", "2022", "Mustang", "GT", "Iconic American muscle car with powerful V8 engine.","", "", EnumsVoiture.Transmission.Manual, EnumsVoiture.Motricite.RWD, EnumsVoiture.TypeCarburant.GAS, "Coupe", "5.0L V8", 2, "20 mpg", "25 mpg", "Track package available", "Yellow,Red,Black", new ArrayList<>(), new ArrayList<>(), "40000$","123", "123", "123");
+        Voiture Mustang22 = new Voiture(10, "Ford", "2023", "Mustang", "GT", "Iconic American muscle car with powerful V8 engine.","","", EnumsVoiture.Transmission.Manual, EnumsVoiture.Motricite.RWD, EnumsVoiture.TypeCarburant.GAS, "Coupe", "5.0L V8", 2, "20 mpg", "25 mpg", "Track package available", "Yellow,Red,Black", new ArrayList<>(), new ArrayList<>(), "40000$","123", "123", "123");
+        Voiture Mustang223 = new Voiture(11, "Ford", "2024", "Mustang2", "GT", "Iconic American muscle car with powerful V8 engine.","","", EnumsVoiture.Transmission.Manual, EnumsVoiture.Motricite.RWD, EnumsVoiture.TypeCarburant.GAS, "Coupe", "5.0L V8", 2, "20 mpg", "25 mpg", "Track package available", "Yellow,Red,Black", new ArrayList<>(), new ArrayList<>(), "40000$","123", "123", "123");
+        Voiture voiture5 = new Voiture(5, "BMW", "2022", "3 Series", "330i","Luxury sedan with strong performance and upscale interior","","", EnumsVoiture.Transmission.Manual, EnumsVoiture.Motricite.RWD, EnumsVoiture.TypeCarburant.GAS, "Sedan", "2.0L turbocharged 4-cylinder", 4, "29 mpg", "34 mpg", "Leather upholstery,Navigation system","Black,White,Silver",new ArrayList<>(), new ArrayList<>(), "45000$","123", "123", "123");
         Voiture voiture6 = new Voiture(6, "Audi", "2012", "vers1", "a4");
         Voiture voiture7 = new Voiture(7, "Audi", "2012", "vers2", "a5");
         Voiture voiture8 = new Voiture(8, "Audi", "2018", "autobahn", "rs7");
@@ -72,6 +70,5 @@ public class UtilisateursBD implements CommandLineRunner {
         System.out.println("---------");
         System.out.println(voitureRepository.getListOfModels("Audi"));
         System.out.println("---------");
-       // System.out.println(voitureRepository.getListOfModelYear("Mustang"));
     }
 }
