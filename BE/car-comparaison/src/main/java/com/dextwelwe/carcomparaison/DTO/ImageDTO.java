@@ -12,7 +12,7 @@ public class ImageDTO {
     private String type;
     private VoitureDto voitureDto;
     private UtilisateurDTO utilisateurDTO;
-    private byte[] imageData;
+    private String imageData;
     public Image fromDTO(ImageDTO imageDTO){
         return new Image(
           imageDTO.getId(),
@@ -20,7 +20,7 @@ public class ImageDTO {
            imageDTO.getType(),
           imageDTO.voitureDto.fromDTOMin(imageDTO.getVoitureDto()),
           imageDTO.getUtilisateurDTO().fromDTO(imageDTO.getUtilisateurDTO()),
-                imageDTO.getImageData()
+                imageDTO.getImageData().getBytes()
         );
     }
 }

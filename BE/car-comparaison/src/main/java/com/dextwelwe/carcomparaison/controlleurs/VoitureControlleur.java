@@ -36,6 +36,7 @@ public class VoitureControlleur {
             return new ResponseEntity<>(voitureService.getCar(id), HttpStatus.ACCEPTED);
         }
         catch (Exception e){
+            System.out.println(e.getMessage());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }

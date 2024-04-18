@@ -84,7 +84,7 @@ export default function Main() {
   return (
     <>
     <div className="topDiv">
-      <Header></Header>       
+       
     <div className='content'>
 
     <div >

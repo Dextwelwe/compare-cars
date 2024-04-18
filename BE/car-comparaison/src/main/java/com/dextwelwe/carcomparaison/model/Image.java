@@ -8,6 +8,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.lang.NonNull;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Base64;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,9 +28,9 @@ public class Image {
     private String type;
     @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="VOITURE")
     private Voiture voiture;
     @OneToOne
-    @NonNull
     private Utilisateur proprietaire;
     @Lob
     private byte[] imageData;
@@ -34,7 +41,24 @@ public class Image {
                 image.getType(),
                 image.getVoiture().toDTOMin(image.getVoiture()),
                 image.getProprietaire().toDTO(image.getProprietaire()),
-                image.getImageData()
+                image.imageToString(imageData)
         );
+    }
+    public String imageToString(byte[] img){
+        return Base64.getEncoder().encodeToString(img);
+    }
+
+    public byte[] imgToByteArray(String path) throws IOException {
+        byte[] imageData = null;
+        File file = new File(path);
+        try {
+            FileInputStream fis = new FileInputStream(file);
+            imageData = new byte[(int) file.length()];
+            fis.read(imageData);
+            fis.close();
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return imageData;
     }
 }

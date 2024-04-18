@@ -7,6 +7,7 @@ function App() {
   return (
     <Router>
       <Routes>
+        
         <Route exact path="/"element={<Main></Main>} />
         <Route path="/cars/:id" element={<CarView></CarView>} />
         <Route path='*' element={<NotFoundPage></NotFoundPage>} />

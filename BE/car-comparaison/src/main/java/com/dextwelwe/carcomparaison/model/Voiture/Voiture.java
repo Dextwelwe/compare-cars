@@ -1,4 +1,5 @@
 package com.dextwelwe.carcomparaison.model.Voiture;
+import com.dextwelwe.carcomparaison.DTO.ImageDTO;
 import com.dextwelwe.carcomparaison.DTO.Voiture.VoitureDto;
 import com.dextwelwe.carcomparaison.model.Image;
 import com.dextwelwe.carcomparaison.model.Rating;
@@ -9,6 +10,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.lang.NonNull;
+
+import java.util.ArrayList;
 import java.util.List;
 @Entity
 @Data
@@ -77,13 +80,21 @@ public class Voiture {
                 voiture.getEconomieCarburantAutoroute(),
                 voiture.getCharacteristiques(),
                 voiture.getCouleurs(),
-                voiture.getImages(),
+                voiture.toImageDTO(voiture.getImages()),
                 voiture.getNote(),
                 voiture.getMSRP(),
                 voiture.getPuissance(),
                 voiture.getCouple(),
                 voiture.getAutonomie()
         );
+    }
+
+    public List<ImageDTO> toImageDTO(List<Image> images){
+        List<ImageDTO> imagesDTO  = new ArrayList<>();
+        for (Image i : images){
+            imagesDTO.add(i.toDTO(i));
+        }
+        return imagesDTO;
     }
     public VoitureDto toDTOMin(Voiture voiture){
         return new VoitureDto(

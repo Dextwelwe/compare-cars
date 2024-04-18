@@ -1,4 +1,5 @@
 package com.dextwelwe.carcomparaison.DTO.Voiture;
+import com.dextwelwe.carcomparaison.DTO.ImageDTO;
 import com.dextwelwe.carcomparaison.model.Image;
 import com.dextwelwe.carcomparaison.model.Rating;
 import com.dextwelwe.carcomparaison.model.Voiture.Voiture;
@@ -26,7 +27,7 @@ public class VoitureDto {
     private String economieCarburantAutoroute;
     private String characteristiques;
     private String couleurs;
-    private List<Image> images;
+    private List<ImageDTO> images;
     private List<Rating> note;
     private String MSRP;
     private String puissance;

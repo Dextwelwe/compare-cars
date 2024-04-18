@@ -12,18 +12,20 @@ const navigate = useNavigate();
 
   useEffect(() => { 
     getCar(id, setCar, navigate);
+    console.log(id)
      // eslint-disable-next-line
  },[]);
 
 
   return (
     <>
-    <Header></Header>
     <div className='rootCarView'>   
       <div className='content-box contentContainer'>
       <div className='row1'>
       <div>
-      <img src='https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?cs=srgb&dl=pexels-mike-bird-170811.jpg&fm=jpg' width={500} height={300}></img>
+     {car.images &&
+      <img src={`data:image/jpg;base64,${car.images[0].imageData}`} alt="Byte Array Image" width={500} height={300}/>
+     }
       </div>
       <div>
       {car.msrp}
