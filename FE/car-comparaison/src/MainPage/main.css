@@ -1,8 +1,9 @@
 .topDiv {
-    height : 100vh;
+    height : 100%;
     width: 100%;
     user-select: none;
     background-color: #F7EFE5;
+
 }
 
 #titleSelect {
@@ -50,7 +51,7 @@ select {
 }
 
 .header {
-    margin-top : 5px;
+    margin-top : 20px;
     width: 99%;
     left: 50%;
     transform: translate(-50%);

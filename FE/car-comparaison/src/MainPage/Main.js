@@ -4,6 +4,7 @@ import "../global.css"
 import {getMakes, getModelYear, getModels, getTrims,getCarId} from './apiCalls';
 import { useNavigate} from 'react-router-dom';
 import Header from '../header/Header';
+import Footer from '../footer/Footer';
 
 
 export default function Main() {
@@ -81,6 +82,7 @@ export default function Main() {
   }
 
   return (
+    <>
     <div className="topDiv">
       <Header></Header>       
     <div className='content'>
@@ -116,8 +118,10 @@ export default function Main() {
         </div>
         </div>
     </div>
-    <div id='footer'>Dextwelwe 2024</div>
    
     </div>
+
+    <Footer></Footer>
+    </>
   )
 }

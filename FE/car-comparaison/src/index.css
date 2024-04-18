@@ -10,8 +10,11 @@ code {
     monospace;
 }
 
-.root{
-/*  background-image: linear-gradient(to top, #1f242c, #21262e, #222831, #242a33, #262c36); */
-  
+.root{ 
+  background-color: #F7EFE5;
   width: 100%;
   }
+
+ html {
+  background-color: #F7EFE5;
+ } 

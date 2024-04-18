@@ -3,6 +3,7 @@ import { getCar } from './apiCalls'
 import { useParams,useNavigate } from 'react-router-dom';
 import './CarView.css'
 import Header from '../header/Header.js'
+import Footer from '../footer/Footer.js';
 
 export default function CarView() {
 const [car, setCar] = useState('')
@@ -19,7 +20,7 @@ const navigate = useNavigate();
     <>
     <Header></Header>
     <div className='rootCarView'>   
-      <div className='contentContainer'>
+      <div className='content-box contentContainer'>
       <div className='row1'>
       <div>
       <img src='https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?cs=srgb&dl=pexels-mike-bird-170811.jpg&fm=jpg' width={500} height={300}></img>
@@ -51,9 +52,10 @@ const navigate = useNavigate();
 
       <section className='reviews'>
       <div>REVIEWS</div>
-        </section>
+        </section>        
       </div>
       </div>
+      <div style={{position:'relative'}}><Footer></Footer></div>
       </>
   )
 }
