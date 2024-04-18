@@ -6,9 +6,23 @@ import arrowDown from '../images/caret-down-solid.svg'
 import LoginPopup from '../Login/LoginPopup';
 export default function Header() {
 
+  
+
     const [isLoginOpen, setIsLoginOpen] = useState(false);
     const [isLogged, setIsLogged] = useState(false);
     const [username, setUserName] = useState("");
+    const [isMain , setIsMain] = useState('');
+    useEffect(() => {
+      checkUrl()
+      window.addEventListener('popstate', checkUrl);
+      
+    },[]);
+
+    function checkUrl(){
+      if (window.location.href ==="http://localhost:3000/"){
+        setIsMain('true');
+      }
+    }
     const updateUser = (username) => {
         setUserName(username);
         toast.success("Successfuly connected.");
@@ -23,6 +37,9 @@ export default function Header() {
         <div className='header'>
             <h1 id='titleHeader'>Search & Compare Cars</h1>
             <div className='divButtonHeader'>
+              { !isMain &&
+            <button type='button' className='button'>Home</button>
+              }
             <button className='button'>Discover</button>
             {isLogged ? (
                  <button className='button' type='button' style={{gap : '5px'}}>{username} <span><img className='optionsUser' src={arrowDown}></img></span></button>) :

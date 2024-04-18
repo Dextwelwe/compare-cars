@@ -4,6 +4,12 @@
     justify-content: center;
     align-items: center;
     overflow-y: auto;
+    font-family: "Cairo", sans-serif;
+}
+
+.contentCarView{
+    margin-top :50px;
+    width: 90%;
     
 }
 
@@ -16,42 +22,66 @@
     border-radius: 5px;
     padding : 25px;
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: start;
 }
 
 .row1{
    
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     flex-wrap: wrap;
+}
+
+.row1Col2{
+   margin-left : 70px;
+   line-height: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .row2 {
     flex-wrap: wrap;
     display: flex;
     justify-content: start;
+    margin-top : 40px;
+
 }
 
 .row3 {
+margin-top : 40px;
 flex-wrap: wrap;
 display: flex;
 justify-content: space-between;
-height: 300px;
+height: 400px;
 }
 
 .generalInfo {
+    border-radius: 5px;
     width: 45%;
-    height: 300px;
+    height: 400px;
     background-color: aquamarine;
 }
 
 .advantages {
-height: 150px;
-background-color: yellowgreen;
+border-radius: 5px;
+height: 49%;
+background-color: #B3FFAE;
+}
+
+.reviewsContent{
+    border-radius: 5px;
+    width: 100%;
+    height : 300px;
+    background-color: antiquewhite;
 }
 
 .disadvantages {
-height: 150px;
-background-color: burlywood;
+border-radius: 5px;
+height: 49%;
+background-color: #FF7D7D;
 }
 
 .proCons {
@@ -64,6 +94,12 @@ background-color: burlywood;
 }
 
 .reviews{
-    height: 500px;
+    margin-top : 50px;
+    height: 300px;
+}
+
+.h5{
+    margin:0;
+    padding : 10px;
 }
 
