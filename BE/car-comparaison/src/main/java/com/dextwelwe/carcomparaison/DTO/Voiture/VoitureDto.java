@@ -15,8 +15,8 @@ public class VoitureDto {
     private String modele;
     private String version;
     private String description;
-    private String avantages;
-    private String desavantages;
+    private String[] avantages;
+    private String[] desavantages;
     private String transmission;
     private String motricite;
     private String typeCarburant;

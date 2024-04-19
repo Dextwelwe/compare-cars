@@ -9,7 +9,6 @@ import Header from './header/Header';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div className='root'>
-  
     <App />
   </div>
 );
