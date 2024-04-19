@@ -28,6 +28,7 @@ public class Voiture {
     private String modele;
     @NonNull
     private String version;
+    @Column(length = 2048)
     private String description;
     private  String avantages;
     private String desavantages;

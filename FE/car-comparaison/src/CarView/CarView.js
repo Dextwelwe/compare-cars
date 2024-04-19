@@ -3,9 +3,12 @@ import { getCar } from './apiCalls'
 import { useParams,useNavigate } from 'react-router-dom';
 import './CarView.css'
 import Footer from '../footer/Footer.js';
+import GeneralInfo from './GeneralInfo.js';
+import Specifications from './Specifications.js';
 
 export default function CarView() {
 const [car, setCar] = useState('')
+const [infoMode, setInfoMode] = useState('General');
 const { id } = useParams();
 const navigate = useNavigate();
 
@@ -15,7 +18,10 @@ const navigate = useNavigate();
      // eslint-disable-next-line
  },[]);
 
-  
+  function handleInfoMode(e){
+    console.log(e.target.innerHTML)
+    setInfoMode(e.target.innerHTML)
+  }
 
   return (
 
@@ -32,28 +38,34 @@ const navigate = useNavigate();
       </div>
       <div className='row1Col2'>
         <div>
-        <h2>{car.marque} {car.modele} {car.annee} {car.version}</h2>
-        <h3>Price : {car.msrp}</h3>
-        <h3>Rating : {car.note} /5</h3>
+        <h2 style={{fontWeight:'600', fontSize: '30px'}}>{car.marque} {car.modele} {car.annee} {car.version}</h2>
+        <h3 style={{fontWeight:'300',fontSize: '18px'}}><strong style={{fontWeight:'600'}}>Fuel consumption : </strong>{car.economieCarburant}</h3>
+        <h3 style={{fontWeight:'300',fontSize: '18px'}}><strong style={{fontWeight:'600'}}>Price : </strong>{car.msrp}</h3>
+        <h3 style={{fontWeight:'300',fontSize: '18px'}}><strong style={{fontWeight:'600'}}>Rating : </strong>{car.note} 4.3/5</h3>
         </div>
         <div>
-        <button className='button' style={{marginBottom : '10px', backgroundColor : '#0E46A3'}} onClick={()=>navigate('/compare')}>Compare</button>
+        <button className='button' style={{marginBottom : '10px'}} onClick={()=>navigate('/compare')}>Compare</button>
         </div>
       </div>
       </div>
 
       <section className='row2'>
-      <h4>{car.description}</h4>
+        <div style={{backgroundColor : '#F7EFE5', width: '97.5%', borderRadius: '5px'}}>
+      <h4 style={{padding: '5px', paddingLeft:'10px',fontSize: '18px', fontWeight:'400'}}>{car.description}</h4>
+        </div>
       </section>
 
       <section className='row3'>
       <div className='generalInfo'>
       <div className='infoButtonList'>
-        <button className='button buttonMenuInfo'>General</button>
-        <button className='button buttonMenuInfo'>Specifications</button>
+        <button className='button buttonMenuInfo' style={{borderTopLeftRadius: '5px' }} onClick={(event)=>handleInfoMode(event)}>General</button>
+        <button className='button buttonMenuInfo' style={{borderTopRightRadius: '5px' }} onClick={(event)=>handleInfoMode(event)}>Specifications</button>
       </div>
       <div>
-
+     { infoMode === 'General' ?
+      <GeneralInfo car={car}></GeneralInfo> :
+      <Specifications car={car}></Specifications>
+     }
       </div>
       </div>
      <div className='proConsWrapper'>
