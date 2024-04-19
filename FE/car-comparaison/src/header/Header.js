@@ -4,23 +4,25 @@ import {Toaster} from "react-hot-toast";
 import {toast} from "react-hot-toast";
 import arrowDown from '../images/caret-down-solid.svg'
 import LoginPopup from '../Login/LoginPopup';
+import { useLocation , useNavigate} from 'react-router-dom';
 export default function Header() {
-
-  
-
     const [isLoginOpen, setIsLoginOpen] = useState(false);
     const [isLogged, setIsLogged] = useState(false);
     const [username, setUserName] = useState("");
-    const [isMain , setIsMain] = useState('');
+    const [isMain , setIsMain] = useState('true');
+    const location = useLocation();
+    const navigate = useNavigate();
+
     useEffect(() => {
-      checkUrl()
-      window.addEventListener('popstate', checkUrl);
-      
-    },[]);
+     console.log(location.pathname)
+     checkUrl()
+    },[location.pathname]);
 
     function checkUrl(){
-      if (window.location.href ==="http://localhost:3000/"){
-        setIsMain('true');
+      if (location.pathname ==="/"){
+        setIsMain(true);
+      }else {
+        setIsMain(false)
       }
     }
     const updateUser = (username) => {
@@ -38,7 +40,7 @@ export default function Header() {
             <h1 id='titleHeader'>Search & Compare Cars</h1>
             <div className='divButtonHeader'>
               { !isMain &&
-            <button type='button' className='button'>Home</button>
+            <button type='button' className='button' onClick={()=>navigate('/')}>Home</button>
               }
             <button className='button'>Discover</button>
             {isLogged ? (
