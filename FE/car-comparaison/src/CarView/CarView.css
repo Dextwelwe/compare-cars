@@ -78,6 +78,19 @@ background-color: #B3FFAE;
     background-color: antiquewhite;
 }
 
+.infoButtonList{
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttonMenuInfo {
+box-shadow: none;
+width: 50%;
+border : none;
+border-radius: 0;
+border-color : transparent;
+}
+
 .disadvantages {
 border-radius: 5px;
 height: 49%;

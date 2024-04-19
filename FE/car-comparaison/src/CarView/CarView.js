@@ -32,10 +32,10 @@ const navigate = useNavigate();
         <div>
         <h2>{car.marque} {car.modele} {car.annee}</h2>
         <h3>Price : {car.msrp}</h3>
-        <h3>Rating : {car.note}</h3>
+        <h3>Rating : {car.note} /5</h3>
         </div>
         <div>
-        <button className='button' style={{marginBottom : '10px'}} >Compare</button>
+        <button className='button' style={{marginBottom : '10px', backgroundColor : '#0E46A3'}} >Compare</button>
         </div>
       </div>
       </div>
@@ -46,7 +46,13 @@ const navigate = useNavigate();
 
       <section className='row3'>
       <div className='generalInfo'>
-
+      <div className='infoButtonList'>
+        <button className='button buttonMenuInfo'>General</button>
+        <button className='button buttonMenuInfo'>Specifications</button>
+      </div>
+      <div>
+        
+      </div>
       </div>
 
       <div className='proCons'>

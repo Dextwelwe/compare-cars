@@ -86,7 +86,7 @@ export default function LoginPopup({closePopup, setUser, setIsLogged}) {
     }
 
     function handleSignUp(){
-       if (validateEmail() && validatePassword() && validateUserName()){
+       if (validateFormSignUp()){
         let requestData = {
             nomUtilisateur : username,
             motDePasse : password,
@@ -119,6 +119,14 @@ export default function LoginPopup({closePopup, setUser, setIsLogged}) {
            document.getElementById("connectionErr").style.display = "inline";
         });
     }
+    }
+
+    function validateFormSignUp(){
+       let goodToGo = true;
+       if (!validateUserName()){goodToGo = false};
+       if (!validatePassword()){goodToGo = false};
+       if (!validateEmail()){goodToGo = false};
+       return goodToGo;
     }
 
     function validateUserName(){
