@@ -11,4 +11,6 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long> 
     Utilisateur findByNomUtilisateurOrEmail(String nomUtilisateur, String email);
     @Query("SELECT g FROM Gestionnaire g WHERE g.nomUtilisateur = :nomUtilisateur")
     Gestionnaire findGestionnaireByNomUtilisateur(String nomUtilisateur);
+    @Query("SELECT p.preferences from Utilisateur p where p.nomUtilisateur = :username")
+    String getUserPreferences(String username);
 }

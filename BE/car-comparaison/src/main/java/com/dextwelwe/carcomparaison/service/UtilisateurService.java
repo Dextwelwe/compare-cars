@@ -26,6 +26,10 @@ public class UtilisateurService {
         throw new Exception("Username or password are incorrect.");
     }
 
+    public String getUserPreferences(String username){
+        return utilisateurRepository.getUserPreferences(username);
+    }
+
     public boolean isUnique(UtilisateurDTO utilisateurDTO) throws Exception {
         Utilisateur utilisateur = utilisateurRepository.findByNomUtilisateurOrEmail(utilisateurDTO.getNomUtilisateur(),utilisateurDTO.getEmail());
         if (utilisateur != null){

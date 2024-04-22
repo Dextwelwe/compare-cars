@@ -14,7 +14,6 @@ export default function Header() {
     const navigate = useNavigate();
 
     useEffect(() => {
-     console.log(location.pathname)
      checkUrl()
     },[location.pathname]);
 
@@ -27,6 +26,7 @@ export default function Header() {
     }
     const updateUser = (username) => {
         setUserName(username);
+        sessionStorage.setItem("username", username);
         toast.success("Successfuly connected.");
       };
       const toggleLoginPopup = () => {

@@ -14,3 +14,19 @@ export const getCar = async (id, setCar, navigate) => {
       console.error('There was a problem with the fetch operation:', error);
     });
   }  
+
+  export const getUserPreferences = async (username, setUserPreferences) => {
+    fetch(`http://localhost:8080/api/utilisateur/getPreferences?username=` + username )
+    .then(response => {
+      if (!response.ok) {
+      }
+      return response.text();
+    })
+    .then(data => {
+      console.log(data.split(";"))
+      setUserPreferences(data.split(";"))
+    })
+    .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+    });
+  }  

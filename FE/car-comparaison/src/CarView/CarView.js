@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getCar } from './apiCalls'
+import { getCar, getUserPreferences } from './apiCalls'
 import { useParams,useNavigate } from 'react-router-dom';
 import './CarView.css'
 import Footer from '../footer/Footer.js';
@@ -8,13 +8,17 @@ import Specifications from './Specifications.js';
 
 export default function CarView() {
 const [car, setCar] = useState('')
+const [userPreferences, setUserPreferences] = useState('null');
 const [infoMode, setInfoMode] = useState('General');
 const { id } = useParams();
 const navigate = useNavigate();
 
   useEffect(() => { 
     getCar(id, setCar, navigate);
-    console.log(id)
+    var username = sessionStorage.getItem('username');
+    if (username !== null){
+      getUserPreferences(username, setUserPreferences);
+    }
      // eslint-disable-next-line
  },[]);
 
@@ -63,7 +67,7 @@ const navigate = useNavigate();
       </div>
       <div>
      { infoMode === 'General' ?
-      <GeneralInfo car={car}></GeneralInfo> :
+      <GeneralInfo preferences={userPreferences} car={car}></GeneralInfo> :
       <Specifications car={car}></Specifications>
      }
       </div>

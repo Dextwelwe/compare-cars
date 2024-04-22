@@ -35,4 +35,13 @@ public class UtilisateurControlleur{
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
+    @GetMapping("/getPreferences")
+    public ResponseEntity<String> getUserPreferences(@RequestParam("username") String username){
+        try {
+            return ResponseEntity.ok(utilisateurService.getUserPreferences(username));
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
 }
