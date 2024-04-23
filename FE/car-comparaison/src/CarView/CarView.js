@@ -8,7 +8,7 @@ import Specifications from './Specifications.js';
 
 export default function CarView() {
 const [car, setCar] = useState('')
-const [userPreferences, setUserPreferences] = useState('null');
+const [userPreferences, setUserPreferences] = useState([]);
 const [infoMode, setInfoMode] = useState('General');
 const { id } = useParams();
 const navigate = useNavigate();
@@ -30,7 +30,7 @@ const navigate = useNavigate();
   return (
 
     <>
-    {car !== "" && 
+    {car !== "" && userPreferences !== '' &&
     <div className='rootCarView'>   
       <div className='content-box contentContainer'>
         <div className='contentCarView'>

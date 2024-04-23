@@ -14,6 +14,7 @@ export default function Header() {
     const navigate = useNavigate();
 
     useEffect(() => {
+      sessionStorage.setItem("username", '');
      checkUrl()
     },[location.pathname]);
 
