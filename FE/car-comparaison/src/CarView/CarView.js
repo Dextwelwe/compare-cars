@@ -48,7 +48,7 @@ const navigate = useNavigate();
         <h3 style={{fontWeight:'300',fontSize: '18px'}}><strong style={{fontWeight:'600'}}>Rating : </strong>{car.note} 4.3/5</h3>
         </div>
         <div>
-        <button className='button' style={{marginBottom : '10px'}} onClick={()=>navigate('/compare')}>Compare</button>
+        <button className='button' style={{marginBottom : '10px'}} onClick={()=>navigate('/compare', {state : {car}})}>Compare</button>
         </div>
       </div>
       </div>
