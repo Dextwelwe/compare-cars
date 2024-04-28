@@ -17,17 +17,16 @@ export default function GeneralInfo({preferences,car}) {
   useEffect(() => {
    if (preferences.length > 1){
     setPrefs(setPreferences(preferences))
-   }else {
+   }else{
     setPrefs(setPreferences(defaultPreferences));
    }
    // eslint-disable-next-line
-  },[])
+  },[preferences])
 
   function setPreferences(preferences){
     var preferencesList = [];
     for (let i =0; i < preferences.length; i++){
       var tmp = checkPreference(preferences[i])
-      console.log(tmp)
       preferencesList.push({
         type : preferences[i],
         value : tmp[0],

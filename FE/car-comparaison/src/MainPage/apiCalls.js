@@ -23,7 +23,6 @@ export const getModels = async (setModels, make) => {
         return response.json();
       })
       .then(data => {
-        console.log(data)
         setModels(data)
       })
       .catch(error => {
@@ -39,7 +38,6 @@ export const getModelYear = async (setYears, make, model) => {
          return response.json();
        })
        .then(data => {
-         console.log(data)
          setYears(data)
        })
        .catch(error => {
@@ -56,7 +54,6 @@ export const getModelYear = async (setYears, make, model) => {
            return response.json();
          })
          .then(data => {
-           console.log(data)
            setTrims(data)
          })
          .catch(error => {
@@ -68,7 +65,6 @@ export const getModelYear = async (setYears, make, model) => {
      const response = await fetch(`http://localhost:8080/api/voiture/getCarId?make=` + make + `&model=` + model + `&year=` + year + `&trim=` + trim)
      const data = await response.json();    
      setCarId.current = data;   
-     console.log(data)
     }   
 
     

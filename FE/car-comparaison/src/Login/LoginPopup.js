@@ -80,6 +80,7 @@ export default function LoginPopup({closePopup, setUser, setIsLogged}) {
             }
         })
         .catch(error => {
+            console.log(error)
            setConnectionErrorMessage("Internal server error. Please try again later.");
            document.getElementById("connectionErr").style.display = "inline";
         });

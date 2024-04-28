@@ -6,7 +6,7 @@ import Footer from '../footer/Footer.js';
 import GeneralInfo from './GeneralInfo.js';
 import Specifications from './Specifications.js';
 
-export default function CarView() {
+export default function CarView({username}) {
 const [car, setCar] = useState('')
 const [userPreferences, setUserPreferences] = useState([]);
 const [infoMode, setInfoMode] = useState('General');
@@ -15,12 +15,12 @@ const navigate = useNavigate();
 
   useEffect(() => { 
     getCar(id, setCar, navigate);
-    var username = sessionStorage.getItem('username');
-    if (username !== null){
+   // var username = sessionStorage.getItem('username');
+    if (username !== ''){
       getUserPreferences(username, setUserPreferences);
     }
      // eslint-disable-next-line
- },[]);
+ },[username]);
 
   function handleInfoMode(e){
     console.log(e.target.innerHTML)
@@ -55,7 +55,7 @@ const navigate = useNavigate();
 
       <section className='row2'>
         <div style={{backgroundColor : '#F7EFE5', width: '97.5%', borderRadius: '5px'}}>
-      <h4 style={{padding: '5px', paddingLeft:'10px',fontSize: '18px', fontWeight:'400'}}>{car.description}</h4>
+      <h4 style={{padding: '5px', paddingLeft:'10px',fontSize: '20px', fontWeight:'400'}}>{car.description}</h4>
         </div>
       </section>
 

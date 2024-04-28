@@ -1,14 +1,13 @@
 import React from 'react'
-import  {useState, useEffect, useRef} from 'react'
+import  {useState, useEffect} from 'react'
 import {Toaster} from "react-hot-toast";
 import {toast} from "react-hot-toast";
 import arrowDown from '../images/caret-down-solid.svg'
 import LoginPopup from '../Login/LoginPopup';
 import { useLocation , useNavigate} from 'react-router-dom';
-export default function Header() {
+export default function Header({setUsername, username}) {
     const [isLoginOpen, setIsLoginOpen] = useState(false);
     const [isLogged, setIsLogged] = useState(false);
-    const [username, setUserName] = useState("");
     const [isMain , setIsMain] = useState('true');
     const location = useLocation();
     const navigate = useNavigate();
@@ -26,7 +25,7 @@ export default function Header() {
       }
     }
     const updateUser = (username) => {
-        setUserName(username);
+        setUsername(username);
         sessionStorage.setItem("username", username);
         toast.success("Successfuly connected.");
       };

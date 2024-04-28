@@ -72,7 +72,6 @@ export default function Main() {
     setSelectedModel('Model')
     setIsDisabledYear(true)
     setIsDisabledTrim(true)
-    console.log(e.target.value)
     if (e.target.value !== 'Make'){
     setSelectedMake(e.target.value)
     getModels(setModels,e.target.value);

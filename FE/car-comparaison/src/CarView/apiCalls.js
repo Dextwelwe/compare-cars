@@ -6,7 +6,6 @@ export const getCar = async (id, setCar, navigate) => {
       return response.json();
     })
     .then(data => {
-      console.log(data)
       setCar(data)
     })
     .catch(error => {
@@ -23,7 +22,6 @@ export const getCar = async (id, setCar, navigate) => {
       return response.text();
     })
     .then(data => {
-      console.log(data.split(";"))
       setUserPreferences(data.split(";"))
     })
     .catch(error => {
