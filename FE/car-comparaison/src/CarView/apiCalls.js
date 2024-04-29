@@ -8,6 +8,7 @@ export const getCar = async (id, setCar, navigate) => {
     .then(data => {
       console.log(data)
       setCar(data)
+      return data;
     })
     .catch(error => {
       navigate('/404')  

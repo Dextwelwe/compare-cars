@@ -21,7 +21,7 @@ export default function Header({setUsername, username}) {
       if (location.pathname ==="/"){
         setIsMain(true);
       }else {
-        setIsMain(false)
+        setIsMain(false);
       }
     }
     const updateUser = (username) => {
@@ -42,6 +42,7 @@ export default function Header({setUsername, username}) {
               { !isMain &&
             <button type='button' className='button' onClick={()=>navigate('/')}>Home</button>
               }
+            <button type='button' className='button' onClick={()=>navigate('/compare')}>Compare</button>
             <button className='button'>Discover</button>
             {isLogged ? (
                  <button className='button' type='button' style={{gap : '5px'}}>{username} <span><img className='optionsUser' src={arrowDown}></img></span></button>) :

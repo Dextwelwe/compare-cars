@@ -6,6 +6,7 @@ import Footer from '../footer/Footer.js';
 import GeneralInfo from './GeneralInfo.js';
 import Specifications from './Specifications.js';
 
+
 export default function CarView({username}) {
 const [car, setCar] = useState('')
 const [userPreferences, setUserPreferences] = useState([]);
@@ -15,7 +16,6 @@ const navigate = useNavigate();
 
   useEffect(() => { 
     getCar(id, setCar, navigate);
-   // var username = sessionStorage.getItem('username');
     if (username !== ''){
       getUserPreferences(username, setUserPreferences);
     }

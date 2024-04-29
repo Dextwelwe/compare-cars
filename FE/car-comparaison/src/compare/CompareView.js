@@ -1,11 +1,16 @@
 import React, {useEffect, useState} from 'react'
 import { useLocation } from 'react-router-dom';
 import  './compareview.css'
+import { getCar } from '../CarView/apiCalls.js';
+import { useNavigate} from 'react-router-dom';
+import SearchBar from '../SearchBar/SearchBar.js';
 import Footer from '../footer/Footer';
 
 export default function CompareView() {
   const location = useLocation();
   const [car, setCar] = useState([]);
+  const [button, setButton] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (location.state) {
@@ -13,30 +18,59 @@ export default function CompareView() {
       } 
   }, []);
 
-  const addElement = () => {
-    if (car.length < 4){
-    setCar(prevArray => [...prevArray, car[0]]);
-    }
+  const addElement = (car) => {
+    setCar(prevArray => [...prevArray, car]);
   };
+
+  function setSearchPopup(){
+    setButton(true)
+  }
+
+  async function handleAddCar(id){
+    let newCar = await getCar(id, addElement, navigate)
+    console.log('car ' + newCar)
+    setButton(false)
+    
+     
+  }
+
+  function removeCar(id){
+    let carsCopy = [...car];
+    const index = carsCopy.findIndex(x => x.id === id);
+    if (index !== -1) {
+        carsCopy.splice(index, 1);
+    }
+    setCar(carsCopy);
+  }
   
   return (
     <>
-    <div style={{ width: '100%',  textAlign:'center', display : 'flex', justifyContent:'center'}}>
-      <div style={{width : "80%", height : '100%', backgroundColor:'#FFFBF5', display:'block'}} className='contentContainer content-box'>
-        <div style={{display : 'flex', justifyContent : 'space-between', alignItems : 'center'}}> 
-        <h1 style={{ fontWeight : "600", marginTop : '0', marginBottom : '25px'}}>Compare Cars</h1>
-        <button className='button' onClick={addElement} > Add a car </button>   
+    {
+      button && <div id='frame'>
+        <div id='popup' style={{width : 'unset'}}>
+        <SearchBar handle={handleAddCar}></SearchBar>
         </div>
-        <div style={{display:'flex', justifyContent : 'start'}}>
-        <div style={{width : '300px'}}>
-              </div>
+      </div>
+    }
+    <div style={{ width: '100%',  textAlign:'center', display : 'flex', justifyContent:'center'}}>
+      <div style={{width : "80%", height : '100%', backgroundColor:'#FFFBF5', display:'block', minHeight : '450px',overflowY:'hidden',overflowX : 'auto'}} className='contentContainer content-box'>
+        <div style={{display : 'flex', justifyContent : 'space-between', alignItems : 'center'}}> 
+        <h1 style={{ fontWeight : "600", marginTop : '0', marginBottom : '25px'}}>Compare Cars (2-5)</h1>
+        <button className='button' id='buttonAddCar' onClick={setSearchPopup} disabled={car.length > 4}> Add a car </button>   
+        </div>
+        <div style={{display:'flex', justifyContent : 'start',overflowX : 'auto', overflowY:'hidden'}}>
+       
+       { car.length >0 ?(<div style={{width : '300px'}}>
+          </div> ): (<div></div>)
+}
           { 
               car.length > 0 ? ( car.map((item, index) => (
             <div key={index} style={{width : '300px',display:'flex', flexDirection :'column', justifyContent:'flex-start', alignItems:'center'}}>
+            <button className='button' style={{marginBottom : '-15px', marginRight : '15px',height: '25px', width: '25px', alignSelf:'end', backgroundColor : 'red', zIndex : '1001'}} onClick={()=>removeCar(item.id)}>&#x2715;</button>
             <img style={{borderRadius : '5px'}} src={`data:image/jpg;base64,${item.images[0].imageData}`} alt="car" width={250} height={150}/>
             <h2 style={{fontWeight:'600', fontSize: '20px',lineHeight : '20px'}}>{item.marque} {item.modele} {item.annee} </h2>
             <h2 style={{fontWeight:'600', fontSize: '20px', margin :"0", lineHeight : '20px'}}>{item.version} </h2>
-              </div>))) : (<></>)
+              </div>))) : (<div style={{width: '100%', textAlign:'start'}}>ADD A CAR TO CONTINUE</div>)
           }
         </div>
         <hr></hr>
@@ -82,7 +116,7 @@ export default function CompareView() {
 }
       </div>
       </div>
-     
+     <Footer></Footer>
       </>
   )
 }
