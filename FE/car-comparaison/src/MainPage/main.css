@@ -62,7 +62,7 @@ select {
     justify-content: space-between;   
     border-style: solid;
     border : 0;
-   
+    z-index: 1001;
 }
 
 #titleHeader {
@@ -120,6 +120,7 @@ select {
         transform: unset;
         height: max-content;
         margin-bottom : 10px;
+        z-index: 9999;
     }
 
     #titleHeader {

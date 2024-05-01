@@ -9,6 +9,7 @@ export default function Header({setUsername, username}) {
     const [isLoginOpen, setIsLoginOpen] = useState(false);
     const [isLogged, setIsLogged] = useState(false);
     const [isMain , setIsMain] = useState('true');
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -18,6 +19,7 @@ export default function Header({setUsername, username}) {
     },[location.pathname]);
 
     function checkUrl(){
+      setIsMenuOpen(false)
       if (location.pathname ==="/"){
         setIsMain(true);
       }else {
@@ -27,11 +29,22 @@ export default function Header({setUsername, username}) {
     const updateUser = (username) => {
         setUsername(username);
         sessionStorage.setItem("username", username);
-        toast.success("Successfuly connected.");
+        toast.success("Successfuly connected");
       };
       const toggleLoginPopup = () => {
         setIsLoginOpen(!isLoginOpen);
       }; 
+
+      function setMenuOpen (){
+        setIsMenuOpen(!isMenuOpen);
+      }
+
+      function signOut(){
+        setUsername('')
+        setIsLogged(false)
+        setIsMenuOpen(false)
+        toast.success("Signed off");
+      }
   return (
     <div>
       <Toaster position="top-center" reverseOrder={false} toastOptions={{style: {fontFamily: 'Cairo'}}}/>
@@ -45,7 +58,14 @@ export default function Header({setUsername, username}) {
             <button type='button' className='button' onClick={()=>navigate('/compare')}>Compare</button>
             <button className='button'>Discover</button>
             {isLogged ? (
-                 <button className='button' type='button' style={{gap : '5px'}}>{username} <span><img className='optionsUser' src={arrowDown}></img></span></button>) :
+                 <><button className='button' type='button' onClick={setMenuOpen} style={{ gap: '2px' }}>{username} <span><img className='optionsUser' src={arrowDown}></img></span></button>
+              { isMenuOpen &&
+                <div className="dropdown-menu">
+              <a href="#">Preferences</a>
+              <a href="#" onClick={signOut}>Sign Out</a>
+              </div>
+              }
+            </>) :
           (
            <button type='button' className='button' onClick={toggleLoginPopup}>Sign In </button> )}
             </div>
