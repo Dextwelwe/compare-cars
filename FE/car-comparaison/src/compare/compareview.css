@@ -2,9 +2,63 @@
     margin:0;
 }
 
+.widthElement {
+    width: 300px;
+}
+
 .listImemColor1{
 background-color: #F7EFE5;
 }
-.listImemColor2{
-    
+.footerCompare{
+    margin-bottom : 0px;
+    width: 100%;
+    text-align : center;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 14px;
+}
+
+#popupCompare{
+    position: fixed;
+    height: max-content;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    padding: 10px;
+}
+
+@media screen and (max-width: 1095px) {
+ h1 {
+    font-size: 20px;
+    margin:0;
+ }
+    #popupCompare{
+width: 95%;
+    }
+   
+    .contentCompare{
+        width: 98% !important;
+    }
+
+    .widthElement{
+        width: 300px;
+        font-size: 15px!important;
+    }
+
+    .imgCompare {
+        width: 100% !important;
+        height: 100%;
+    }
+
+    .footerCompare{
+        width: 100%;
+        text-align : center;
+        position: absolute;
+        bottom: 0px;
+        left: 50%;
+        transform: translate(-50%);
+        font-size: 14px;
+    }
 }

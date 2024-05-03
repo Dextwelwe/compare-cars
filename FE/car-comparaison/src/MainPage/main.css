@@ -134,7 +134,7 @@ select {
     }
 
     .searchContainer {
-            width:100%;
+            width:100% !important;
             flex-direction: column;
             height: 100%;
     }
@@ -225,7 +225,7 @@ select {
         }
     
         .searchContainer {
-                width:100%;
+                width:100% !important;
                 flex-direction: column;
                 flex-wrap: wrap;
                 height: 100%;
