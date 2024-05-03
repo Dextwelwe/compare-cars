@@ -5,17 +5,21 @@ import {toast} from "react-hot-toast";
 import arrowDown from '../images/caret-down-solid.svg'
 import LoginPopup from '../Login/LoginPopup';
 import { useLocation , useNavigate} from 'react-router-dom';
+import PreferenceMenu from '../PreferenceMenu/PreferenceMenu';
 export default function Header({setUsername, username}) {
     const [isLoginOpen, setIsLoginOpen] = useState(false);
     const [isLogged, setIsLogged] = useState(false);
     const [isMain , setIsMain] = useState('true');
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const [isPreferenceOpen, setIsPreferenceOpen] = useState(false)
+
     const location = useLocation();
     const navigate = useNavigate();
 
     useEffect(() => {
       sessionStorage.setItem("username", '');
      checkUrl()
+     // eslint-disable-next-line
     },[location.pathname]);
 
     function checkUrl(){
@@ -39,6 +43,12 @@ export default function Header({setUsername, username}) {
         setIsMenuOpen(!isMenuOpen);
       }
 
+      function setIsPreferenceMenuOpen(){
+        setIsMenuOpen(false);
+        setIsPreferenceOpen(!isPreferenceOpen);
+      }
+
+
       function signOut(){
         setUsername('')
         setIsLogged(false)
@@ -47,6 +57,7 @@ export default function Header({setUsername, username}) {
       }
   return (
     <div>
+      {isPreferenceOpen && <PreferenceMenu closePopup={setIsPreferenceMenuOpen} username={username}> </PreferenceMenu>}
       <Toaster position="top-center" reverseOrder={false} toastOptions={{style: {fontFamily: 'Cairo'}}}/>
         {isLoginOpen && <LoginPopup closePopup={toggleLoginPopup} setUser={updateUser} setIsLogged={setIsLogged} />}
         <div className='header'>
@@ -58,11 +69,11 @@ export default function Header({setUsername, username}) {
             <button type='button' className='button' onClick={()=>navigate('/compare')}>Compare</button>
             <button className='button'>Discover</button>
             {isLogged ? (
-                 <><button className='button' type='button' onClick={setMenuOpen} style={{ gap: '2px' }}>{username} <span><img className='optionsUser' src={arrowDown}></img></span></button>
+                 <><button className='button' type='button' onClick={setMenuOpen} style={{ gap: '2px' }}>{username} <span><img className='optionsUser' alt="arrow Down" src={arrowDown}></img></span></button>
               { isMenuOpen &&
                 <div className="dropdown-menu">
-              <a href="#">Preferences</a>
-              <a href="#" onClick={signOut}>Sign Out</a>
+              <button  onClick={setIsPreferenceMenuOpen}>Preferences</button>
+              <button  onClick={signOut}>Sign Out</button>
               </div>
               }
             </>) :

@@ -4,7 +4,6 @@ import  './compareview.css'
 import { getCar } from '../CarView/apiCalls.js';
 import { useNavigate} from 'react-router-dom';
 import SearchBar from '../SearchBar/SearchBar.js';
-import Footer from '../footer/Footer';
 
 export default function CompareView() {
   const location = useLocation();
@@ -16,6 +15,7 @@ export default function CompareView() {
     if (location.state) {
       setCar(prevArr => [...prevArr, location.state.car]);
       } 
+     // eslint-disable-next-line  
   }, []);
 
   const addElement = (car) => {
@@ -52,8 +52,9 @@ export default function CompareView() {
         </div>
       </div>
     }
+    <div>
     <div style={{ width: '100%',  textAlign:'center', display : 'flex', justifyContent:'center'}}>
-      <div style={{width : "80%", height : '100%', backgroundColor:'#FFFBF5', display:'block', minHeight : '250px',overflowY:'hidden',overflowX : 'auto'}} className='contentContainer content-box'>
+      <div style={{width : "80%", height : '100%', backgroundColor:'#FFFBF5', display:'block', minHeight : '250px',overflowY:'hidden',overflowX : 'auto', marginBottom : '30px'}} className='contentContainer content-box'>
         <div style={{display : 'flex', justifyContent : 'space-between', alignItems : 'center'}}> 
         <h1 style={{ fontWeight : "600", marginTop : '0', marginBottom : '25px'}}>Compare Cars (2-5)</h1>
         <button className='button' id='buttonAddCar' onClick={setSearchPopup} disabled={car.length > 4}> Add a car </button>   
@@ -108,7 +109,7 @@ export default function CompareView() {
         </div>  
       </div>
       </div>
-     <Footer></Footer>
+      </div>
       </>
   )
 }

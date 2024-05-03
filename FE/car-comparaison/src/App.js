@@ -5,6 +5,7 @@ import NotFoundPage from './NotFound.js'
 import Header from './header/Header';
 import CompareView from './compare/CompareView.js';
 import  { useState } from 'react';
+import Footer from './footer/Footer.js';
 
 function App() {
   const [username, setUsername] = useState('');
@@ -18,6 +19,7 @@ function App() {
         <Route path="/compare" element={<CompareView></CompareView>} />
         <Route path='*' element={<NotFoundPage></NotFoundPage>} />
         </Routes>
+        <Footer></Footer>
     </Router>
   );
 }

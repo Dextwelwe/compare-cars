@@ -17,7 +17,7 @@ export const getCar = async (id, setCar, navigate) => {
   }  
 
   export const getUserPreferences = async (username, setUserPreferences) => {
-    fetch(`http://localhost:8080/api/utilisateur/getPreferences?username=` + username )
+    await fetch(`http://localhost:8080/api/utilisateur/getPreferences?username=` + username )
     .then(response => {
       if (!response.ok) {
       }

@@ -1,7 +1,6 @@
 import React from 'react'
 import "./main.css"
 import "../global.css"
-import Footer from '../footer/Footer';
 import SearchBar from '../SearchBar/SearchBar';
 import { useNavigate} from 'react-router-dom';
 
@@ -20,7 +19,7 @@ const handleRedirect = (id) => {
     <SearchBar handle={handleRedirect}></SearchBar>
     </div>
     </div>
-    <Footer></Footer>
+
     </>
   )
 }
