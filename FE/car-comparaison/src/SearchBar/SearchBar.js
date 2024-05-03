@@ -25,10 +25,7 @@ export default function SearchBar({handle}) {
      },[]);
      
      
-       function handleSelectMake(e){
-           setSelectedYear('Year')
-           setSelectedTrim('Trim')
-       }
+     
      
        function handleSelectModel(e){
        getModelYear(setYears, selectedMake, e.target.value);
@@ -43,17 +40,28 @@ export default function SearchBar({handle}) {
          } 
        
        function handleSelectYear(e){
+        console.log(e.target.value)
+       
        getTrims(setTrims, selectedMake, selectedModel, e.target.value);
+       setIsSearchDisabled(true)
        setIsDisabledTrim(false)
-       if (e.target.value !== selectedYear){
+       if (e.target.value === 'Year'){
          setSelectedTrim('Trim')
+         setIsSearchDisabled(true)
+         setIsDisabledTrim(true)
        }
        setSelectedYear(e.target.value);
-       setIsSearchDisabled(false)
        }
      
        function handleSelectedTrim(e){
          setSelectedTrim(e.target.value)
+         console.log(e.target.value)
+         if (e.target.value !== 'Trim'){
+          setIsSearchDisabled(false)
+         }else {
+          setIsSearchDisabled(true) 
+         }
+        
        }
      
        async function handleCarSearch(){
@@ -91,13 +99,13 @@ export default function SearchBar({handle}) {
             ))}
           </select>
       <select name="year" disabled={isDisabledYear} value={selectedYear} onChange={handleSelectYear}>
-          <option value="" >Year</option>
+          <option value="Year" >Year</option>
           {years.map((option, index) => (
           <option key={index} value={option}>{option}</option>
           ))}
       </select>
       <select name="trim" value={selectedTrim} disabled={isDisabledTrim} onChange={handleSelectedTrim} >
-          <option value="audi">Trim</option>
+          <option value="Trim">Trim</option>
           {trims.map((option, index) => (
         <option key={index} value={option}>{option}</option>
       ))}

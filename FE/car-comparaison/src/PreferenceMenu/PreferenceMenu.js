@@ -110,6 +110,7 @@ export default function PreferenceMenu({closePopup, username}) {
          result += el.type + ";"   
         }
      }
+     setIsError(false)
      toast.success("Preferences were successfuly saved");
      return setUserPreferences(username, result.slice(0,-1), updateUserPreferences);
      }
@@ -117,7 +118,7 @@ export default function PreferenceMenu({closePopup, username}) {
   return (
     <div id='frame'>
       <Toaster position="top-center" reverseOrder={false} toastOptions={{style: {fontFamily: 'Cairo'}}}/>
-      <div id='popup' style={{width:'50%'}} className='preferenceMenuContent content-box'>
+      <div id='popup' className='preferenceMenuContent content-box popupPref'>
       <div className='closeButtonContainer'>     
       <button className='closePopup' onClick={closePopup}>&times;</button>
       </div>
