@@ -58,7 +58,7 @@ export default function Header({setUsername, username}) {
   return (
     <div>
       {isPreferenceOpen && <PreferenceMenu closePopup={setIsPreferenceMenuOpen} username={username}> </PreferenceMenu>}
-      <Toaster position="top-center" reverseOrder={false} toastOptions={{style: {fontFamily: 'Cairo'}}}/>
+      <Toaster position="top-center" reverseOrder={false} toastOptions={{style: {fontFamily: 'Cairo', zIndex: '9999'}}}/>
         {isLoginOpen && <LoginPopup closePopup={toggleLoginPopup} setUser={updateUser} setIsLogged={setIsLogged} />}
         <div className='header'>
             <h1 id='titleHeader'>Search & Compare Cars</h1>

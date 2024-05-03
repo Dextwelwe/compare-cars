@@ -35,14 +35,14 @@ const navigate = useNavigate();
       <div className='content-box contentContainer'>
         <div className='contentCarView'>
       <div className='row1'>
-      <div style={{left: '0'}}>
+      <div style={{left: '0', width:'max-content',alignSelf:'center'}}>
      {car.images &&
-      <img style={{borderRadius : '5px'}} src={`data:image/jpg;base64,${car.images[0].imageData}`} alt="car" width={500} height={300}/>
+      <img id='imgCar' style={{borderRadius : '5px'}} src={`data:image/jpg;base64,${car.images[0].imageData}`} alt="car" width={500} height={300}/>
      }
       </div>
       <div className='row1Col2'>
         <div>
-        <h2 style={{fontWeight:'600', fontSize: '30px'}}>{car.marque} {car.modele} {car.annee} {car.version}</h2>
+        <h2 style={{fontWeight:'600', fontSize: '25px'}}>{car.marque} {car.modele} {car.annee} {car.version}</h2>
         <h3 style={{fontWeight:'300',fontSize: '18px'}}><strong style={{fontWeight:'600'}}>Fuel consumption : </strong>{car.economieCarburant}</h3>
         <h3 style={{fontWeight:'300',fontSize: '18px'}}><strong style={{fontWeight:'600'}}>Price : </strong>{car.msrp}</h3>
         <h3 style={{fontWeight:'300',fontSize: '18px'}}><strong style={{fontWeight:'600'}}>Rating : </strong>{car.note} 4.3/5</h3>

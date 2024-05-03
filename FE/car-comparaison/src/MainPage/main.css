@@ -102,7 +102,7 @@ select {
     }
    
     .divButtonHeader {
-        width: 60%;
+        width: 95%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -120,7 +120,7 @@ select {
         transform: unset;
         height: max-content;
         margin-bottom : 10px;
-        z-index: 9999;
+        z-index: 1010;
     }
 
     #titleHeader {
@@ -198,7 +198,7 @@ select {
         }
        
         .divButtonHeader {
-            width: max-content;
+            width: 70%;
             display: flex;
             justify-content: flex-end;
             align-items: center;

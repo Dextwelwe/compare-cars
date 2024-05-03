@@ -55,7 +55,7 @@ export default function CompareView() {
     }
     <div>
     <div style={{ width: '100%',  textAlign:'center', display : 'flex', justifyContent:'center'}}>
-      <div style={{width : "80%", height : '100%', backgroundColor:'#FFFBF5', display:'block', minHeight : '250px',overflowY:'hidden',overflowX : 'auto', marginBottom : '30px'}} className='contentContainer content-box'>
+      <div style={{width : "80%", height : '100%', backgroundColor:'#FFFBF5', display:'block', minHeight : '250px',overflowY:'hidden',overflowX : 'auto', marginBottom : '0'}} className='contentContainer content-box'>
         <div style={{display : 'flex', justifyContent : 'space-between', alignItems : 'center'}}> 
         <h1 style={{ fontWeight : "600", marginTop : '0', marginBottom : '25px'}}>Compare Cars (2-5)</h1>
         <button className='button' id='buttonAddCar' onClick={setSearchPopup} disabled={car.length > 4}> Add a car </button>   
@@ -111,6 +111,7 @@ export default function CompareView() {
       </div>
       </div>
       </div>
+    
       <Footer></Footer>
       </>
   )

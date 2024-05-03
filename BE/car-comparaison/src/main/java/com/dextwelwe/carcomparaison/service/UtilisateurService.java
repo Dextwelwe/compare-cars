@@ -45,10 +45,7 @@ public class UtilisateurService {
 
     public void setUserPreferences(String username, String preferences) throws Exception{
         Utilisateur utilisateur = utilisateurRepository.findByNomUtilisateur(username);
-        System.out.println("BEFORE AND AFTER");
-        System.out.println(utilisateur.getPreferences());
         utilisateur.setPreferences(preferences);
-        System.out.println(utilisateur.getPreferences());
         utilisateurRepository.save(utilisateur);
     }
 }

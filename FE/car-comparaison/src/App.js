@@ -1,5 +1,6 @@
-import Main from './MainPage/main.js';
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Main from './MainPage/Main.js';
 import CarView from './CarView/CarView.js'
 import NotFoundPage from './NotFound.js'
 import Header from './header/Header';
