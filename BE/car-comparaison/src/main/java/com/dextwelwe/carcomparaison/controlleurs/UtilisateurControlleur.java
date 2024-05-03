@@ -44,4 +44,15 @@ public class UtilisateurControlleur{
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
+
+    @PostMapping("/setPreferences")
+    public ResponseEntity<HttpStatus> setUserPreferences(@RequestParam("username") String username, @RequestParam("preferences") String preferences) {
+        try {
+            utilisateurService.setUserPreferences(username, preferences);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
 }

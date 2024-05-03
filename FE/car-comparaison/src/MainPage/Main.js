@@ -3,6 +3,7 @@ import "./main.css"
 import "../global.css"
 import SearchBar from '../SearchBar/SearchBar';
 import { useNavigate} from 'react-router-dom';
+import Footer from '../footer/Footer';
 
 
 export default function Main() { 
@@ -19,7 +20,7 @@ const handleRedirect = (id) => {
     <SearchBar handle={handleRedirect}></SearchBar>
     </div>
     </div>
-
+    <Footer></Footer>
     </>
   )
 }

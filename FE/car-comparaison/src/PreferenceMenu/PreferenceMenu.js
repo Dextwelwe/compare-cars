@@ -1,8 +1,12 @@
-import React, {useState, useEffect, useRef} from 'react'
-import './PreferenceMenu.css'
-import {getUserPreferences} from '../CarView/apiCalls.js'
+import React, {useState, useEffect, useRef} from 'react';
+import {Toaster} from "react-hot-toast";
+import {toast} from "react-hot-toast";
+import './PreferenceMenu.css';
+import {getUserPreferences, setUserPreferences} from '../CarView/apiCalls.js'
 
-export default function PreferenceMenu({closePopup, preferences, username}) {
+
+
+export default function PreferenceMenu({closePopup, username}) {
     const defaultPreferences = ['ENGINE','FUELTYPE','POWER','TORQUE','TRANSMISSION','AUTONOMY'];
     const [nbSelected, setNbSelected] = useState(6);
     const [isError, setIsError] = useState(false)
@@ -23,18 +27,21 @@ export default function PreferenceMenu({closePopup, preferences, username}) {
 ])
 
     useEffect(() => {
-        let preferences =  getUserPreferences(username, setPreferences);  
-        setPreferences(preferences)
-        initPreferenceView()
+      init()
         // eslint-disable-next-line
   }, []);
 
+    async function init(){
+    await getUserPreferences(username, setPreferences);
+    initPreferenceView()
+    }
 
     function setPreferences(preferences){
+        console.log(preferences)
         if (preferences.length > 1){
-            prefs.current = (preferences)
+            prefs.current = preferences
         } else {
-            prefs.current = (defaultPreferences)
+            prefs.current = defaultPreferences
         }
       } 
 
@@ -50,8 +57,10 @@ export default function PreferenceMenu({closePopup, preferences, username}) {
 
      function initPreferenceView(){
         let preferencesViewTMP = [...preferencesView];
+        console.log('prefs' + prefs.current)
         for (let i=0; i<preferencesViewTMP.length; i++){
             let elem = preferencesViewTMP[i];
+            console.log(elem)
             if (prefs.current.includes(elem.type)){
                 elem.selected = 'Y';
             } else {
@@ -69,6 +78,10 @@ export default function PreferenceMenu({closePopup, preferences, username}) {
          setPreferencesView(preferencesViewTMP)
          setNbSelected(getNumberSelectedItems)
          setIsError(false)
+     }
+
+     function updateUserPreferences(data){
+      prefs.current = data;
      }
 
      function select(item){
@@ -97,11 +110,13 @@ export default function PreferenceMenu({closePopup, preferences, username}) {
          result += el.type + ";"   
         }
      }
-     return result.slice(0,-1);
+     toast.success("Preferences were successfuly saved");
+     return setUserPreferences(username, result.slice(0,-1), updateUserPreferences);
      }
 
   return (
     <div id='frame'>
+      <Toaster position="top-center" reverseOrder={false} toastOptions={{style: {fontFamily: 'Cairo'}}}/>
       <div id='popup' style={{width:'50%'}} className='preferenceMenuContent content-box'>
       <div className='closeButtonContainer'>     
       <button className='closePopup' onClick={closePopup}>&times;</button>

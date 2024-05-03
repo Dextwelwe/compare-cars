@@ -30,3 +30,27 @@ export const getCar = async (id, setCar, navigate) => {
       console.error('There was a problem with the fetch operation:', error);
     });
   }  
+
+  export const setUserPreferences = async (username, preferences, setUserPreferences) => {
+    await fetch(`http://localhost:8080/api/utilisateur/setPreferences?username=${username}&preferences=${preferences}`,{
+      
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+    .then(response => {
+      if (!response.ok) {
+      }
+      return response.text();
+    })
+    .then(data => {
+      console.log(data)
+      setUserPreferences(data.split(";"))
+    })
+    .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+    });
+  }  
+
+

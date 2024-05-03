@@ -4,6 +4,7 @@ import  './compareview.css'
 import { getCar } from '../CarView/apiCalls.js';
 import { useNavigate} from 'react-router-dom';
 import SearchBar from '../SearchBar/SearchBar.js';
+import Footer from '../footer/Footer.js';
 
 export default function CompareView() {
   const location = useLocation();
@@ -82,7 +83,7 @@ export default function CompareView() {
           { 
               car.length > 0 ? ( car.map((item, index) => (
             <div key={index} style={{width : '300px',display:'flex', flexDirection :'column', justifyContent:'flex-start', alignItems:'center'}}>
-            <button className='button' style={{marginBottom : '-15px', marginRight : '15px',height: '25px', width: '25px', alignSelf:'end', backgroundColor : 'red', zIndex : '1001'}} onClick={()=>removeCar(item.id)}>&#x2715;</button>
+            <button className='button' style={{marginBottom : '-15px', marginRight : '15px',height: '24px', width: '24px', alignSelf:'end', backgroundColor : 'red', zIndex : '1001'}} onClick={()=>removeCar(item.id)}>&#x2715;</button>
             <img style={{borderRadius : '5px'}} src={`data:image/jpg;base64,${item.images[0].imageData}`} alt="car" width={250} height={150}/>
             <h2 style={{fontWeight:'600', fontSize: '20px',lineHeight : '20px'}}>{item.marque} {item.modele} {item.annee} </h2>
             <h2 style={{fontWeight:'600', fontSize: '20px', margin :"0", lineHeight : '20px'}}>{item.version} </h2>
@@ -110,6 +111,7 @@ export default function CompareView() {
       </div>
       </div>
       </div>
+      <Footer></Footer>
       </>
   )
 }
