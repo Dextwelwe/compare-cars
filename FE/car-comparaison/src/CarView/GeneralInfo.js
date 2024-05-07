@@ -59,7 +59,7 @@ export default function GeneralInfo({preferences,car}) {
       case 'FUELECONOMYHWY' :
           return [car.economieCarburantAutoroute,fuel];      
       case 'MAXSPEED' :
-          return [car.maxspeed, maxspeed]; 
+          return [car.vitesseMaximale, maxspeed]; 
       default :
           return;         
     }

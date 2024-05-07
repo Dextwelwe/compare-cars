@@ -82,8 +82,7 @@ if (e.target.id === 'frame'){
             <li className='listImemColor1'>DRIVETRAIN </li>
             <li>VEHICULE TYPE </li>
             <li className='listImemColor1'>NUMBER OF DOORS </li>
-            <li>COLORS </li>
-            <li className='listImemColor1'>SPECIAL CHARACTERISTICS </li>
+            
           </ul>
           </div>
           </div> ): (<div></div>)
@@ -107,9 +106,9 @@ if (e.target.id === 'frame'){
            <li >{item.transmission}</li>
            <li className='listImemColor1'>{item.motricite}</li>
            <li >{item.typeCarroserie}</li>
-           <li className='listImemColor1'>{item.transmission}</li>
-           <li>{item.numPortes}</li>
-           <li className='listImemColor1'>{item.characteristiques}</li>
+           <li className='listImemColor1'>{item.numPortes}</li>
+           
+           
             </ul>
           </div>
               </div>))) : (<div style={{width: '100%', textAlign:'start'}}>ADD A CAR TO CONTINUE <hr></hr></div>)
