@@ -16,7 +16,6 @@ public class ImageService {
     public void uploadImage(MultipartFile imageFile) throws IOException {
         var imageToSave = Image.builder()
                 .nomDeFichier(imageFile.getOriginalFilename())
-                .type(imageFile.getContentType())
                 .imageData(ImageUtils.compressImage(imageFile.getBytes()))
                 .build();
         imageRepository.save(imageToSave);

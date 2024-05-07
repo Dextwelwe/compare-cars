@@ -34,6 +34,12 @@ public class VoitureDto {
     private String couple;
     private String autonomie;
 
+    private String vitesseMaximale;
+
+    private String acceleration;
+
+    private String induction;
+
     public VoitureDto(long id, String marque, String annee, String version, String modele) {
         this.id = id;
         this.marque = marque;

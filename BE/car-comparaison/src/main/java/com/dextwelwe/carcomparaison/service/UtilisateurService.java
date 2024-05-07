@@ -42,8 +42,7 @@ public class UtilisateurService {
         }
         return true;
     }
-
-    public void setUserPreferences(String username, String preferences) throws Exception{
+    public void setUserPreferences(String username, String preferences) throws Exception {
         Utilisateur utilisateur = utilisateurRepository.findByNomUtilisateur(username);
         utilisateur.setPreferences(preferences);
         utilisateurRepository.save(utilisateur);

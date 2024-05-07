@@ -9,17 +9,13 @@ import lombok.Data;
 public class ImageDTO {
     private long id;
     private String nomDeFichier;
-    private String type;
     private VoitureDto voitureDto;
-    private UtilisateurDTO utilisateurDTO;
     private String imageData;
     public Image fromDTO(ImageDTO imageDTO){
         return new Image(
           imageDTO.getId(),
           imageDTO.getNomDeFichier(),
-           imageDTO.getType(),
           imageDTO.voitureDto.fromDTOMin(imageDTO.getVoitureDto()),
-          imageDTO.getUtilisateurDTO().fromDTO(imageDTO.getUtilisateurDTO()),
                 imageDTO.getImageData().getBytes()
         );
     }

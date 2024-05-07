@@ -7,7 +7,7 @@ import GeneralInfo from './GeneralInfo.js';
 import Specifications from './Specifications.js';
 
 
-export default function CarView({username}) {
+export default function CarView({username, changes}) {
 const [car, setCar] = useState('')
 const [userPreferences, setUserPreferences] = useState([]);
 const [infoMode, setInfoMode] = useState('General');
@@ -20,7 +20,7 @@ const navigate = useNavigate();
       getUserPreferences(username, setUserPreferences);
     }
      // eslint-disable-next-line
- },[username]);
+ },[username, changes]);
 
   function handleInfoMode(e){
     console.log(e.target.innerHTML)

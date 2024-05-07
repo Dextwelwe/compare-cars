@@ -25,22 +25,18 @@ public class Image {
     private long id;
     @NonNull
     private String nomDeFichier;
-    private String type;
+
     @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="VOITURE")
     private Voiture voiture;
-    @OneToOne
-    private Utilisateur proprietaire;
     @Lob
     private byte[] imageData;
     public ImageDTO toDTO(Image image){
         return new ImageDTO(
                 image.getId(),
                 image.getNomDeFichier(),
-                image.getType(),
                 image.getVoiture().toDTOMin(image.getVoiture()),
-                image.getProprietaire().toDTO(image.getProprietaire()),
                 image.imageToString(imageData)
         );
     }

@@ -6,7 +6,7 @@ import {getUserPreferences, setUserPreferences} from '../CarView/apiCalls.js'
 
 
 
-export default function PreferenceMenu({closePopup, username}) {
+export default function PreferenceMenu({closePopup, username, set, valueCarView}) {
     const defaultPreferences = ['ENGINE','FUELTYPE','POWER','TORQUE','TRANSMISSION','AUTONOMY'];
     const [nbSelected, setNbSelected] = useState(6);
     const [isError, setIsError] = useState(false)
@@ -19,7 +19,7 @@ export default function PreferenceMenu({closePopup, username}) {
         {type : 'TORQUE', name : 'TORQUE', selected : 'N'},
         {type : 'TRANSMISSION', name : 'TRANSMISSION', selected : 'N'},
         {type : 'AUTONOMY', name : 'AUTONOMY', selected : 'N'},
-        {type : 'MOTRICITY', name : 'MOTRICITY', selected : 'N'},
+        {type : 'MOTRICITY', name : 'DRIVETRAIN', selected : 'N'},
         {type : 'TYPE', name : 'TYPE', selected : 'N'},
         {type : 'FUELECONOMY', name : 'FUEL ECONOMY', selected : 'N'},
         {type : 'FUELECONOMYHWY', name : 'FUEL ECONOMY HIGHWAY', selected : 'N'},
@@ -110,6 +110,7 @@ export default function PreferenceMenu({closePopup, username}) {
          result += el.type + ";"   
         }
      }
+     set(!valueCarView)
      setIsError(false)
      toast.success("Preferences were successfuly saved");
      return setUserPreferences(username, result.slice(0,-1), updateUserPreferences);

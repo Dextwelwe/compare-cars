@@ -6,7 +6,7 @@ import arrowDown from '../images/caret-down-solid.svg'
 import LoginPopup from '../Login/LoginPopup';
 import { useLocation , useNavigate} from 'react-router-dom';
 import PreferenceMenu from '../PreferenceMenu/PreferenceMenu';
-export default function Header({setUsername, username}) {
+export default function Header({setUsername, username, updateCarView, setUpdateCarView}) {
     const [isLoginOpen, setIsLoginOpen] = useState(false);
     const [isLogged, setIsLogged] = useState(false);
     const [isMain , setIsMain] = useState('true');
@@ -57,7 +57,7 @@ export default function Header({setUsername, username}) {
       }
   return (
     <div>
-      {isPreferenceOpen && <PreferenceMenu closePopup={setIsPreferenceMenuOpen} username={username}> </PreferenceMenu>}
+      {isPreferenceOpen && <PreferenceMenu set={setUpdateCarView} valueCarView={updateCarView} closePopup={setIsPreferenceMenuOpen} username={username}> </PreferenceMenu>}
       <Toaster position="top-center" reverseOrder={false} toastOptions={{style: {fontFamily: 'Cairo', zIndex: '9999'}}}/>
         {isLoginOpen && <LoginPopup closePopup={toggleLoginPopup} setUser={updateUser} setIsLogged={setIsLogged} />}
         <div className='header'>
@@ -67,7 +67,6 @@ export default function Header({setUsername, username}) {
             <button type='button' className='button' onClick={()=>navigate('/')}>Home</button>
               }
             <button type='button' className='button' onClick={()=>navigate('/compare')}>Compare</button>
-            <button className='button'>Discover</button>
             {isLogged ? (
                  <><button className='button' type='button' onClick={setMenuOpen} style={{ gap: '2px' }}>{username} <span><img className='optionsUser' alt="arrow Down" src={arrowDown}></img></span></button>
               { isMenuOpen &&

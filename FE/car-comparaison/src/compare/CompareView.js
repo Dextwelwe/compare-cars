@@ -72,6 +72,7 @@ if (e.target.id === 'frame'){
        
        { car.length >0 ?(<div className='widthElement' style={{ display:'flex'}}><div className='widthElement' style={{display:'flex', alignSelf:'end', flexDirection :"column", textAlign:'start'}}> <hr style={{width:'87%', margin:'0', alignSelf:"end"}}></hr>
           <ul>
+            <li>PRICE</li>
             <li className='listImemColor1'>ENGINE</li>
             <li>FUEL TYPE</li>
             <li className='listImemColor1'>AUTONOMY</li>
@@ -97,6 +98,7 @@ if (e.target.id === 'frame'){
             <div className='widthElement compareViewSpecificationList'  key={index}>
             <hr></hr>
           <ul style={{listStyleType: 'none', textAlign : 'start', padding : 0}}>
+          <li>{item.msrp}</li>
            <li className='listImemColor1'>{item.moteur}</li>
            <li>{item.typeCarburant}</li>
            <li className='listImemColor1'>{item.autonomie}</li>
@@ -118,8 +120,6 @@ if (e.target.id === 'frame'){
       </div>
       </div>
       </div>
-    
-      <div className='footerCompare'><Footer></Footer></div>
       </>
   )
 }
