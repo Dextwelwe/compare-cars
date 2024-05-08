@@ -15,13 +15,18 @@ export default function GeneralInfo({preferences,car}) {
   const [prefs, setPrefs] = useState([])
 
   useEffect(() => {
+    console.log(
+preferences
+    )
    if (preferences.length > 1){
+    setPrefs([])
     setPrefs(setPreferences(preferences))
    }else{
+    setPrefs([])
     setPrefs(setPreferences(defaultPreferences));
    }
    // eslint-disable-next-line
-  },[preferences])
+  },[preferences,car])
 
   function setPreferences(preferences){
     var preferencesList = [];

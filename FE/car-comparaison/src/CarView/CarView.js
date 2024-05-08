@@ -15,6 +15,7 @@ const { id } = useParams();
 const navigate = useNavigate();
 
   useEffect(() => { 
+    console.log("called")
     getCar(id, setCar, navigate);
     if (username !== ''){
       getUserPreferences(username, setUserPreferences);
