@@ -33,6 +33,7 @@ public class VoitureDto {
     private String puissance;
     private String couple;
     private String autonomie;
+    private String[] revues;
 
     private String vitesseMaximale;
 

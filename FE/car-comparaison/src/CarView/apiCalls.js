@@ -6,6 +6,7 @@ export const getCar = async (id, setCar, navigate) => {
       return response.json();
     })
     .then(data => {
+      console.log(data)
       setCar(data)
       return data;
     })

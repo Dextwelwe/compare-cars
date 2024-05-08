@@ -45,7 +45,6 @@ const navigate = useNavigate();
         <h2 style={{fontWeight:'600', fontSize: '25px'}}>{car.marque} {car.modele} {car.annee} {car.version}</h2>
         <h3 style={{fontWeight:'300',fontSize: '18px'}}><strong style={{fontWeight:'600'}}>Fuel consumption : </strong>{car.economieCarburant}</h3>
         <h3 style={{fontWeight:'300',fontSize: '18px'}}><strong style={{fontWeight:'600'}}>Price : </strong>{car.msrp}</h3>
-        <h3 style={{fontWeight:'300',fontSize: '18px'}}><strong style={{fontWeight:'600'}}>Rating : </strong>{car.note} 4.3/5</h3>
         </div>
         <div>
         <button className='button' style={{marginBottom : '10px'}} onClick={()=>navigate('/compare', {state : {car}})}>Compare</button>
@@ -98,9 +97,12 @@ const navigate = useNavigate();
       </section>
       <h3 style={{marginTop:'40px'}}>REVIEWS</h3>
       <section className='reviews'>
-    
       <div className='reviewsContent'>
-
+      {car.revues.length > 0 && car.revues.map((item, index) => (
+      <div key={index} className='content-box ' style={{flex: '0 0 auto' ,marginLeft:'20px', marginRight:'20px', height : '250px', width:'350px', display:"flex", justifyContent:'start', alignItems:'center', overflowX:'auto', backgroundColor:'white'}}>
+      <iframe width="350" height="250" src={item} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+    </div>
+      ))}
       </div>
         </section>        
       </div>

@@ -52,7 +52,7 @@ public class Voiture {
     private String puissance;
     private String couple;
     private String autonomie;
-
+    private String revues;
     private String vitesseMaximale;
 
     private String acceleration;
@@ -93,6 +93,7 @@ public class Voiture {
                 voiture.getPuissance(),
                 voiture.getCouple(),
                 voiture.getAutonomie(),
+                voiture.getRevues(),
                 voiture.getVitesseMaximale(),
                 voiture.getAcceleration(),
                 voiture.getInduction()
@@ -114,5 +115,8 @@ public class Voiture {
                 voiture.getVersion(),
                 voiture.getModele()
         );
+    }
+    public String[] getRevues() {
+        return (revues != null) ? revues.split(";") : new String[0];
     }
 }

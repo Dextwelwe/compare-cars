@@ -123,7 +123,9 @@ public class UtilisateursBD implements CommandLineRunner {
                 "CA$19,450",
                 "139 hp @ 6,100 rpm (104 kW)",
                 "126 lb·ft @ 3,900 rpm (171 N·m)",
-                "704 km", "",
+                "704 km",
+                "https://www.youtube.com/embed/28EOZjnvIJM?si=sSo23C4orsNzLXPA;https://www.youtube.com/embed/2KhhqJtEhQo?si=uw_vZEjy1Q17oM4D;https://www.youtube.com/embed/1SV4pAz2b-E?si=myNH-8lUljl78oid",
+                "180 kmh",
                 "9.8 s",
                 "Atmospheric");
 
@@ -151,6 +153,7 @@ public class UtilisateursBD implements CommandLineRunner {
                 "310 hp @ 5,500 rpm (231 kW)",
                 "350 lb·ft @ 3,000 rpm (475 N·m)",
                 "580 km",
+                "https://www.youtube.com/embed/n9CdWqt7o1k?si=nWRqYneTn-5Bzstt",
                 "233 km/h (145 mph)",
                 "6.2 s (estimated)",
                 "Turbocharged");
@@ -178,6 +181,7 @@ public class UtilisateursBD implements CommandLineRunner {
                 "450 hp @ 7,000 rpm (336 kW)",
                 "410 lb·ft @ 4,600 rpm (556 N·m)",
                 "447 km",
+                "https://www.youtube.com/embed/eFWUQc-wDzI?si=mh7PKeEYFH_LaH5C",
                 "249 km/h (155 mph) ",
                 "5.2 s",
                 "Atmospheric");
