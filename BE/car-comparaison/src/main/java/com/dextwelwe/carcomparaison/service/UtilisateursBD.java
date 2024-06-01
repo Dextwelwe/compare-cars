@@ -13,6 +13,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+/*
+CAR NAMES AND IMAGES FORMAT : 'MAKE_MODEL_YEAR_FULLTRIMNAME'
+ */
 @Service
 public class UtilisateursBD implements CommandLineRunner {
     @Autowired
@@ -47,7 +51,6 @@ public class UtilisateursBD implements CommandLineRunner {
         List<String> imagePaths = new ArrayList<>();
         File folder = new File("C:/Users/dextw/OneDrive/Desktop/CarComparaison/BE/car-comparaison/src/main/java/com/dextwelwe/carcomparaison/images");
         File[] files = folder.listFiles();
-
         if (files != null) {
             for (File file : files) {
                 if (file.isFile()) {
@@ -373,14 +376,7 @@ public class UtilisateursBD implements CommandLineRunner {
         voitureRepository.save(HondaCivic_2012_Touring_AUT);
         voitureRepository.save(HondaCivic_2013_Touring_AUT);
 
-        mustang.setVoiture(MustangGT);
-        mustang2.setVoiture(Mustang);
-        corolla.setVoiture(Corolla);
-        mazda3_2010_gt_aut.setVoiture(Mazda3_2010_GT_SEDAN_AUT);
-        mazda3_2010_gt_man.setVoiture(Mazda3_2010_GT_SEDAN_MAN);
-        mazda3_2010_gx_aut.setVoiture(Mazda3_2010_GX_SEDAN_AUT);
-        honda_civic_2012.setVoiture(HondaCivic_2012_Touring_AUT);
-        honda_civic_2013.setVoiture(HondaCivic_2013_Touring_AUT);
+
 
         imageRepository.save(mustang);
         imageRepository.save(mustang2);

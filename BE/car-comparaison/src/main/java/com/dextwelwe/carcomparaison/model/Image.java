@@ -1,6 +1,6 @@
 package com.dextwelwe.carcomparaison.model;
 import com.dextwelwe.carcomparaison.DTO.ImageDTO;
-import com.dextwelwe.carcomparaison.model.Users.Utilisateur;
+import com.dextwelwe.carcomparaison.DTO.Voiture.VoitureDto;
 import com.dextwelwe.carcomparaison.model.Voiture.Voiture;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,12 +8,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.lang.NonNull;
-
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Base64;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -25,21 +24,19 @@ public class Image {
     private long id;
     @NonNull
     private String nomDeFichier;
-
     @NonNull
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="VOITURE")
-    private Voiture voiture;
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "images")
+    private List<Voiture> voiture;
     @Lob
     private byte[] imageData;
     public ImageDTO toDTO(Image image){
         return new ImageDTO(
                 image.getId(),
                 image.getNomDeFichier(),
-                image.getVoiture().toDTOMin(image.getVoiture()),
                 image.imageToString(imageData)
         );
     }
+
     public String imageToString(byte[] img){
         return Base64.getEncoder().encodeToString(img);
     }

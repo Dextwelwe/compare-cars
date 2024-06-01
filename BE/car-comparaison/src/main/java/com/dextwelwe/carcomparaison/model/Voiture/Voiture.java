@@ -42,7 +42,7 @@ public class Voiture {
     private String economieCarburantAutoroute;
     private String characteristiques;
     private String couleurs;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "voiture")
+    @ManyToMany(fetch = FetchType.LAZY)
     @ToString.Exclude
     private List<Image> images;
     @OneToMany(fetch = FetchType.LAZY)

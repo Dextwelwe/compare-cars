@@ -1,21 +1,20 @@
 package com.dextwelwe.carcomparaison.DTO;
-import com.dextwelwe.carcomparaison.DTO.Users.UtilisateurDTO;
-import com.dextwelwe.carcomparaison.DTO.Voiture.VoitureDto;
 import com.dextwelwe.carcomparaison.model.Image;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import java.util.ArrayList;
+
 @Data
 @AllArgsConstructor
 public class ImageDTO {
     private long id;
     private String nomDeFichier;
-    private VoitureDto voitureDto;
     private String imageData;
     public Image fromDTO(ImageDTO imageDTO){
         return new Image(
           imageDTO.getId(),
           imageDTO.getNomDeFichier(),
-          imageDTO.voitureDto.fromDTOMin(imageDTO.getVoitureDto()),
+          new ArrayList<>(),
                 imageDTO.getImageData().getBytes()
         );
     }
